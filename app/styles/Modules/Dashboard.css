@@ -1,0 +1,91 @@
+.balance-square {
+  background-color: #ffffff;
+  border-style: groove;
+  padding: 15px 15px 0px 15px;
+  width: 350px;
+}
+
+.balance-table td {
+  border: none !important;
+  padding: 3px !important;
+}
+
+.balance-table td:first-child {
+  width: 250px;
+}
+
+.balance-table td:nth-child(2) {
+  text-align: right;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.datePickers {
+  position: relative;
+  margin: 0 0 30px 0;
+}
+
+.dateFrom {
+  position: absolute;
+}
+
+.dateTo {
+  position: absolute;
+  left: 180px;
+}
+
+.grid {
+  padding-left: 15px;
+}
+
+.MySchedule tr {
+  height: 50px;
+}
+
+.bookedShift {
+  background: #a4d3ee;
+  width: 150px;
+}
+
+.scheduledShift {
+  background: #d297e1;
+  width: 150px;
+}
+
+.MySchedule thead {
+  text-transform: capitalize;
+}
+
+.MySchedule .btn-link {
+  color: black;
+  text-align: center;
+}
+
+.dateNavigationButtons {
+  position: relative;
+}
+
+.previousButton,
+.previousButton:hover,
+.previousButton:focus,
+.previousButton:active,
+.previousButton.active,
+.previousButton:active:focus {
+  position: absolute;
+  background: #7588b0;
+  color: #ffffff;
+}
+
+.nextButton,
+.nextButton:hover,
+.nextButton:focus,
+.nextButton:active,
+.nextButton.active,
+.nextButton:active:focus {
+  position: absolute;
+  background: #7588b0;
+  color: #ffffff;
+  left: 150px;
+}
