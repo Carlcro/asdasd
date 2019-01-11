@@ -16,6 +16,7 @@ import { loadDayTypes, deleteDayType, saveDayType } from './actions';
 import { makeSelectDayTypes } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../App/selectors';
 import messages from './messages';
+import _ from 'lodash';
 
 class DayTypesGrid extends React.Component {
   constructor(props) {
@@ -69,6 +70,8 @@ class DayTypesGrid extends React.Component {
 
   render() {
     const { modalHeader, showModal } = this.state;
+    const { dayTypes } = this.props;
+    const orderedDayTypes = _.orderBy(dayTypes, ['name'], ['asc']);
     return (
       <div>
         <DayTypeAddAndEdit
@@ -90,7 +93,7 @@ class DayTypesGrid extends React.Component {
                   showDeleteButton
                   onDeleteButtonClick={this.handleDeleteButton}
                   columns={gridColumns}
-                  data={this.props.dayTypes}
+                  data={orderedDayTypes}
                   pageSize={10}
                   pageable
                 />

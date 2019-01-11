@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Col, Grid, Row } from 'react-bootstrap';
@@ -9,6 +10,7 @@ import LocaleToggle from '../LocaleToggle';
 
 import NavMenu from '../NavMenu/NavMenu';
 import '@progress/kendo-theme-default/dist/all.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
       <Helmet titleTemplate="%s - Time Care Pool" defaultTitle="Time Care Pool">
         <meta name="description" content=" A Time Care Pool application" />
       </Helmet>
+      <ToastContainer />
       <Grid fluid>
         <Row>
           <Col sm={2}>

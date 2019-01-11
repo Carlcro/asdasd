@@ -57,9 +57,10 @@ export function saveDayType(dayType) {
   };
 }
 
-export function dayTypeSaved() {
+export function dayTypeSaved(dayType) {
   return {
     type: SAVE_DAYTYPE_SUCCESS,
+    dayType,
   };
 }
 

@@ -19,10 +19,11 @@ import {
  * DayTypes request/response handler
  */
 
-const apiEndpoint = 'http://localhost:44387/api/dayTypes';
+const apiEndpoint = '/dayTypes';
 
 function dayTypeUrl(id) {
-  return `${apiEndpoint}/${id}`;
+  if (id) return `${apiEndpoint}/${id}`;
+  return `${apiEndpoint}`;
 }
 
 export function* fetchDayTypes() {

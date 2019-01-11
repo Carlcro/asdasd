@@ -10,7 +10,7 @@
  *   return state.set('yourStateVariable', true);
  */
 
-import { fromJS } from 'immutable';
+import { fromJS, toJS } from 'immutable';
 
 import {
   LOAD_DAYTYPES_SUCCESS,
@@ -51,24 +51,22 @@ function dayTypesReducer(state = initialState, action) {
       return state
         .set(
           'dayTypes',
-          state.get('dayTypes').filter(o => o.get('id') !== action.id),
+          state.get('dayTypes').filter(x => x.id !== action.dayType.id),
         )
         .set('loading', false);
+
     case DELETE_DAYTYPE_ERROR:
       return state.set('error', action.error).set('loading', false);
     case SAVE_DAYTYPE:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .set('dayTypes', false);
+      return state.set('loading', true).set('error', false);
     case SAVE_DAYTYPE_SUCCESS:
-      return state
-        .set(
-          'dayTypes',
-          state.get('dayTypes').filter(o => o.get('id') !== action.id),
-        )
-        .add(action.dayType)
-        .set('loading', false);
+      const dayTypes = state
+        .get('dayTypes')
+        .filter(x => x.id !== action.dayType.id);
+      dayTypes.push(action.dayType);
+
+      return state.set('dayTypes', dayTypes);
+
     case SAVE_DAYTYPE_ERROR:
       return state.set('error', action.error).set('loading', false);
 

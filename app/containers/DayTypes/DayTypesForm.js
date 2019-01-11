@@ -17,7 +17,7 @@ class DayTypesForm extends Form {
 
   schema = {
     id: Joi.number()
-      .required()
+      .allow(null)
       .label('Id'),
     name: Joi.string()
       .required()
@@ -53,7 +53,7 @@ class DayTypesForm extends Form {
 
   mapToViewModel(dayType) {
     return {
-      id: dayType.id || 0,
+      id: dayType.id || null,
       name: dayType.name,
       shortName: dayType.shortName,
       sign: dayType.sign,
@@ -83,9 +83,7 @@ class DayTypesForm extends Form {
           </FormattedMessage>
           <BsGrid>
             <Row>
-              <Col sm={1}>
-                {this.renderButton(<FormattedMessage {...messages.save} />)}
-              </Col>
+              <Col sm={1}>{this.renderButton('Save', 'submit')}</Col>
               <Col>
                 <Button onClick={this.props.handleClose}>
                   <FormattedMessage {...messages.close} />

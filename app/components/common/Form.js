@@ -62,9 +62,9 @@ class Form extends Component {
     this.setState({ data, errors });
   };
 
-  renderButton(label) {
+  renderButton(label, type = 'button') {
     return (
-      <button type="button" className="btn btn-primary">
+      <button type={type} className="btn btn-primary">
         {label}
       </button>
     );

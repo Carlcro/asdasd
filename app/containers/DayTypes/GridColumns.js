@@ -3,7 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 const gridColumns = [
-  { title: <FormattedMessage {...messages.name} />, field: 'name' },
+  {
+    title: <FormattedMessage {...messages.name} />,
+    field: 'name',
+  },
   { title: <FormattedMessage {...messages.shortName} />, field: 'shortName' },
   {
     title: <FormattedMessage {...messages.sign} />,
