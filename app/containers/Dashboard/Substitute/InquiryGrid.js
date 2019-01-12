@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 import reducer from './reducer';
-import { inquiriesData as saga } from './saga';
+import { dashboardData as saga } from './saga';
 import { loadInquiries } from './actions';
+import { saveInquiry } from './actions';
 import { makeSelectInquiries } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';
 import { format } from '../../../utils/dateFormat';
@@ -95,29 +96,20 @@ class InquiryGrid extends Component {
     });
   };
 
-  handleYes = async item => {
+  handleYes = item => {
     const newItem = { ...item };
     newItem.status = 32; // Accept
-    // await this.saveInquiry(newItem);
+    this.saveInquiry(newItem);
   };
 
-  handleNo = async item => {
+  handleNo = item => {
     const newItem = { ...item };
     newItem.status = 2; // Decline
-    // await this.saveInquiry(item);
+    this.saveInquiry(item);
   };
 
-  async saveInquiry(item) {
-    const originalInquiries = this.state.inquiries;
-    const inquiries = originalInquiries.filter(i => i.id !== item.id);
-    this.setState({ inquiries });
-    try {
-      await saveInquiry(item);
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404)
-        toast.error('This inquiry has already been answered.');
-      this.setState({ inquiries: originalInquiries });
-    }
+  saveInquiry(item) {
+    this.props.saveInquiry(item);
   }
 
   renderInquiryBody = () => {

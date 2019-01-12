@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import reducer from './reducer';
-import { balancesData as saga } from './saga';
+import { dashboardData as saga } from './saga';
 import { loadBalances } from './actions';
 import { makeSelectBalances } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';
@@ -26,7 +26,7 @@ class Balances extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const dateFrom = format(this.state.dateFrom, 'YYYY-MM-DD');
     const dateTo = format(this.state.dateTo, 'YYYY-MM-DD');
     this.props.loadBalances(dateFrom, dateTo);

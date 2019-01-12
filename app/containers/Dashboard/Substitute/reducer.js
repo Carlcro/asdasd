@@ -22,6 +22,9 @@ import {
   LOAD_INQUIRIES_SUCCESS,
   LOAD_INQUIRIES,
   LOAD_INQUIRIES_ERROR,
+  SAVE_INQUIRY,
+  SAVE_INQUIRY_SUCCESS,
+  SAVE_INQUIRY_ERROR,
   LOAD_SCHEDULE_SUCCESS,
   LOAD_SCHEDULE,
   LOAD_SCHEDULE_ERROR,
@@ -65,6 +68,17 @@ function dashboardReducer(state = initialState, action) {
     case LOAD_INQUIRIES_SUCCESS:
       return state.set('inquiries', action.inquiries).set('loading', false);
     case LOAD_INQUIRIES_ERROR:
+      return state.set('error', action.error).set('loading', false);
+    case SAVE_INQUIRY:
+      return state.set('loading', true);
+    case SAVE_INQUIRY_SUCCESS:
+      return state
+        .set(
+          'inquiries',
+          state.get('inquiries').filter(x => x.id !== action.inqId),
+        )
+        .set('loading', false);
+    case SAVE_INQUIRY_ERROR:
       return state.set('error', action.error).set('loading', false);
     case LOAD_SCHEDULE:
       return state

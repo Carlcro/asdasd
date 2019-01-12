@@ -53,7 +53,7 @@ export function* saveDayTypes(action) {
 
   try {
     const { data: dayTypes } = yield call(saveDayType, {
-      url: requestURL,
+      requestURL,
       body: action.dayType,
     });
     yield put(dayTypeSaved(dayTypes.data));

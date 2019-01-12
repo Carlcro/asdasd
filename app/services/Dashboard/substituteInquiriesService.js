@@ -5,11 +5,7 @@ export function getInquiries(requestUrl) {
 }
 
 export function saveInquiry(inq) {
-  if (inq.action.inquiry.id) {
-    const body = { ...inq.action };
-    delete body.id;
-    return http.put(inq.requestURL, inq.action.inquiry);
-  }
-
-  // return http.post(apiEndpoint, inq.action);
+  const body = { ...inq.body };
+  delete body.id;
+  return http.put(inq.requestURL, body);
 }

@@ -12,6 +12,10 @@ import {
   balancesLoadingError,
   messagesLoaded,
   messagesLoadingError,
+  inquiriesLoaded,
+  inquiriesLoadingError,
+  inquirySaved,
+  inquirySavedError,
   scheduleLoaded,
   scheduleLoadingError,
 } from './actions';
@@ -39,8 +43,7 @@ function inquiriesUrl(dateFrom) {
 }
 
 function saveInquiryUrl(inquiry) {
-  if (inquiry.id) return `${apiEndpoint}/inquiries/${inquiry.id}`;
-  return `${apiEndpoint}/inquiries`;
+  return `${apiEndpoint}/inquiries/${inquiry.id}`;
 }
 
 function shiftseUrl(dateFrom, dateTo) {
@@ -63,17 +66,6 @@ export function* fetchBalances(action) {
 }
 
 /**
- * Root saga manages watcher lifecycle
- */
-export function* balancesData() {
-  // Watches for LOAD_BALANCES actions and calls fetchBalances when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_BALANCES, fetchBalances);
-}
-
-/**
  * Messages request/response handler
  */
 
@@ -86,10 +78,6 @@ export function* fetchMessages(action) {
   } catch (err) {
     yield put(messagesLoadingError(err));
   }
-}
-
-export function* messagesData() {
-  yield takeLatest(LOAD_MESSAGES, fetchMessages);
 }
 
 /**
@@ -109,26 +97,18 @@ export function* fetchInquiries() {
   }
 }
 
-export function* inquiriesData() {
-  yield takeLatest(LOAD_INQUIRIES, fetchInquiries);
-}
-
 export function* saveNewInquiry(action) {
   const requestURL = saveInquiryUrl(action.inquiry);
 
   try {
-    const { data: inquiries } = yield call(saveInquiry, [
+    const { data: inquiries } = yield call(saveInquiry, {
       requestURL,
-      action.inquiry,
-    ]);
-    yield put(inquirySaved(inquiries.data));
+      body: action.inquiry,
+    });
+    yield put(inquirySaved(inquiries));
   } catch (err) {
-    yield put(inquiriesLoadingError(err));
+    yield put(inquirySavedError(err));
   }
-}
-
-export function* saveInquiryData() {
-  yield takeLatest(SAVE_INQUIRY, saveNewInquiry);
 }
 
 /**
@@ -146,6 +126,13 @@ export function* fetchSchedule(action) {
   }
 }
 
-export function* scheduleData() {
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* dashboardData() {
+  yield takeLatest(LOAD_BALANCES, fetchBalances);
+  yield takeLatest(LOAD_MESSAGES, fetchMessages);
+  yield takeLatest(LOAD_INQUIRIES, fetchInquiries);
+  yield takeLatest(SAVE_INQUIRY, saveNewInquiry);
   yield takeLatest(LOAD_SCHEDULE, fetchSchedule);
 }

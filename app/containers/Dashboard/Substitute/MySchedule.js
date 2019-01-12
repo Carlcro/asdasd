@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import reducer from './reducer';
-import { scheduleData as saga } from './saga';
+import { dashboardData as saga } from './saga';
 import { loadSchedule } from './actions';
 import { makeSelectSchedule } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';

@@ -8,10 +8,10 @@ export function saveDayType(dayType) {
   if (dayType.body.id) {
     const body = { ...dayType.body };
     delete body.id;
-    return http.put(dayType.url, body);
+    return http.put(dayType.requestURL, body);
   }
 
-  return http.post(dayType.url, dayType.body);
+  return http.post(dayType.requestURL, dayType.body);
 }
 
 export function deleteDayType(requestUrl) {

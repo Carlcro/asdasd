@@ -22,7 +22,9 @@ export const LOAD_INQUIRIES_SUCCESS = 'Substitute/LOAD_INQUIRIES_SUCCESS';
 export const LOAD_INQUIRIES_ERROR = 'Substitute/LOAD_INQUIRIES_ERROR';
 
 export const SAVE_INQUIRY = 'Substitute/SAVE_INQUIRY';
+export const SAVE_INQUIRY_SUCCESS = 'Substitute/SAVE_INQUIRY_SUCCESS';
+export const SAVE_INQUIRY_ERROR = 'Substitute/SAVE_INQUIRY_ERRROR';
 
-export const LOAD_SCHEDULE = 'Substitute/LOAD_INQUIRIES';
+export const LOAD_SCHEDULE = 'Substitute/LOAD_SCHEDULE';
 export const LOAD_SCHEDULE_SUCCESS = 'Substitute/LOAD_SCHEDULE_SUCCESS';
 export const LOAD_SCHEDULE_ERROR = 'Substitute/LOAD_SCHEDULE_ERROR';

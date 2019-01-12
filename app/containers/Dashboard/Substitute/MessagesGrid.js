@@ -12,7 +12,7 @@ import { gridColumns } from './gridColumns';
 import DatePicker from '../../../components/common/DatePicker';
 import Grid from '../../../components/common/Grid';
 import reducer from './reducer';
-import { messagesData as saga } from './saga';
+import { dashboardData as saga } from './saga';
 import { loadMessages } from './actions';
 import { makeSelectMessages } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';

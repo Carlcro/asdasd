@@ -8,6 +8,9 @@ import {
   LOAD_INQUIRIES,
   LOAD_INQUIRIES_SUCCESS,
   LOAD_INQUIRIES_ERROR,
+  SAVE_INQUIRY,
+  SAVE_INQUIRY_SUCCESS,
+  SAVE_INQUIRY_ERROR,
   LOAD_SCHEDULE,
   LOAD_SCHEDULE_SUCCESS,
   LOAD_SCHEDULE_ERROR,
@@ -63,10 +66,10 @@ export function loadInquiries() {
   };
 }
 
-export function inquiriesLoaded(Inquiries) {
+export function inquiriesLoaded(inquiries) {
   return {
     type: LOAD_INQUIRIES_SUCCESS,
-    Inquiries,
+    inquiries,
   };
 }
 
@@ -79,21 +82,21 @@ export function inquiriesLoadingError(error) {
 
 export function saveInquiry(inquiry) {
   return {
-    type: LOAD_INQUIRIES,
+    type: SAVE_INQUIRY,
     inquiry,
   };
 }
 
-export function inquirySaved(Inquiries) {
+export function inquirySaved(inqId) {
   return {
-    type: LOAD_INQUIRIES_SUCCESS,
-    Inquiries,
+    type: SAVE_INQUIRY_SUCCESS,
+    inqId,
   };
 }
 
 export function inquirySavedError(error) {
   return {
-    type: LOAD_INQUIRIES_ERROR,
+    type: SAVE_INQUIRY_ERROR,
     error,
   };
 }
