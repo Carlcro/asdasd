@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import reducer from './reducer';
-import { dashboardData as saga } from './saga';
+import { balanceData as saga } from './saga';
 import { loadBalances } from './actions';
 import { makeSelectBalances } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';
@@ -161,7 +161,7 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'dashboard', reducer });
-const withSaga = injectSaga({ key: 'dashboard', saga });
+const withSaga = injectSaga({ key: 'balance', saga });
 
 export default compose(
   withReducer,

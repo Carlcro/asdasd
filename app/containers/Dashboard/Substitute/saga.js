@@ -129,10 +129,18 @@ export function* fetchSchedule(action) {
 /**
  * Root saga manages watcher lifecycle
  */
-export function* dashboardData() {
+export function* balanceData() {
   yield takeLatest(LOAD_BALANCES, fetchBalances);
+}
+
+export function* messageData() {
   yield takeLatest(LOAD_MESSAGES, fetchMessages);
+}
+
+export function* inquiryData() {
   yield takeLatest(LOAD_INQUIRIES, fetchInquiries);
   yield takeLatest(SAVE_INQUIRY, saveNewInquiry);
+}
+export function* scheduleData() {
   yield takeLatest(LOAD_SCHEDULE, fetchSchedule);
 }

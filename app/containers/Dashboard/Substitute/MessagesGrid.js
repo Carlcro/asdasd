@@ -12,7 +12,7 @@ import { gridColumns } from './gridColumns';
 import DatePicker from '../../../components/common/DatePicker';
 import Grid from '../../../components/common/Grid';
 import reducer from './reducer';
-import { dashboardData as saga } from './saga';
+import { messageData as saga } from './saga';
 import { loadMessages } from './actions';
 import { makeSelectMessages } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';
@@ -28,7 +28,7 @@ class MessagesGrid extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.setState({ loading: true });
     const dateFrom = format(this.state.dateFrom, 'YYYY-MM-DD');
     const dateTo = format(this.state.dateTo, 'YYYY-MM-DD');
@@ -38,7 +38,7 @@ class MessagesGrid extends Component {
     this.setState({ loading: false });
   }
 
-  handleFromDateChange = async event => {
+  handleFromDateChange = event => {
     const value = new Date(event.target.value);
 
     const dateFrom = value;
@@ -47,10 +47,10 @@ class MessagesGrid extends Component {
     if (dateFrom > dateTo) {
       dateTo = addDays(new Date(dateFrom), 7);
     }
-    await this.updateNewTime(dateTo, dateFrom);
+    this.updateNewTime(dateFrom, dateTo);
   };
 
-  handleToDateChange = async event => {
+  handleToDateChange = event => {
     const value = new Date(event.target.value);
 
     const dateTo = value;
@@ -59,13 +59,16 @@ class MessagesGrid extends Component {
     if (dateTo < dateFrom) {
       dateFrom = addDays(new Date(dateTo), -7);
     }
-    await this.updateNewTime(dateTo, dateFrom);
+    this.updateNewTime(dateFrom, dateTo);
   };
 
-  async updateNewTime(dateTo, dateFrom) {
+  updateNewTime(dateFrom, dateTo) {
     this.setState({ dateTo, dateFrom, loading: true });
 
-    this.props.loadMessages(dateFrom, dateTo);
+    this.props.loadMessages(
+      format(dateFrom, 'YYYY-MM-DD'),
+      format(dateTo, 'YYYY-MM-DD'),
+    );
 
     this.setState({ loading: false });
   }
@@ -141,7 +144,7 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'dashboard', reducer });
-const withSaga = injectSaga({ key: 'dashboard', saga });
+const withSaga = injectSaga({ key: 'message', saga });
 
 export default compose(
   withReducer,

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 import reducer from './reducer';
-import { dashboardData as saga } from './saga';
+import { inquiryData as saga } from './saga';
 import { loadInquiries } from './actions';
 import { saveInquiry } from './actions';
 import { makeSelectInquiries } from './selectors';
@@ -78,7 +78,7 @@ class InquiryGrid extends Component {
     ],
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.props.loadInquiries();
   }
 
@@ -181,7 +181,7 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'dashboard', reducer });
-const withSaga = injectSaga({ key: 'dashboard', saga });
+const withSaga = injectSaga({ key: 'inquiry', saga });
 
 export default compose(
   withReducer,

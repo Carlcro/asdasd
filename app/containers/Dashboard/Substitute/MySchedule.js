@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import reducer from './reducer';
-import { dashboardData as saga } from './saga';
+import { scheduleData as saga } from './saga';
 import { loadSchedule } from './actions';
 import { makeSelectSchedule } from './selectors';
 import { makeSelectLoading, makeSelectError } from '../../App/selectors';
@@ -216,7 +216,7 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'dashboard', reducer });
-const withSaga = injectSaga({ key: 'dashboard', saga });
+const withSaga = injectSaga({ key: 'schedule', saga });
 
 export default compose(
   withReducer,

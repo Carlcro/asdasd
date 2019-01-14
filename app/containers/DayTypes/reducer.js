@@ -46,7 +46,6 @@ function dayTypesReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .set('dayTypes', false);
     case DELETE_DAYTYPE_SUCCESS:
       return state
         .set(
