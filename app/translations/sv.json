@@ -1,9 +1,4 @@
 {
-  "boilerplate.containers.LocaleToggle.de": "",
-  "boilerplate.containers.LocaleToggle.en": "",
-  "boilerplate.containers.NavMenu.dayTypes": "Dagtyper",
-  "boilerplate.containers.NavMenu.home": "Hem",
-  "boilerplate.containers.NotFoundPage.header": "Sidan finns inte",
   "containers.Common.add": "Lägg till",
   "containers.Common.delete": "Ta bort",
   "containers.Common.edit": "Redigera",
@@ -41,5 +36,11 @@
   "containers.DayTypes.name": "Namn",
   "containers.DayTypes.save": "Spara",
   "containers.DayTypes.shortName": "Kortnamn",
-  "containers.DayTypes.sign": "Tecken"
+  "containers.DayTypes.sign": "Tecken",
+  "containers.LocaleToggle.en": "en",
+  "containers.LocaleToggle.sv": "sv",
+  "containers.NavMenu.dayTypes": "Dagtyper",
+  "containers.NavMenu.home": "Hem",
+  "containers.NotFoundPage.goBack": "Gå tillbaka till dashboard",
+  "containers.NotFoundPage.header": "Sidan kunde inte hittas"
 }

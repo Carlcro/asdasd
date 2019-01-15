@@ -5,7 +5,7 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.NavMenu';
+export const scope = 'containers.NavMenu';
 
 export default defineMessages({
   home: {

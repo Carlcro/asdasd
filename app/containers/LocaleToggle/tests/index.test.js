@@ -52,7 +52,7 @@ describe('<LocaleToggle />', () => {
       it('should dispatch changeLocale when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
-        const locale = 'de';
+        const locale = 'sv';
         const evt = { target: { value: locale } };
         result.onLocaleToggle(evt);
         expect(dispatch).toHaveBeenCalledWith(changeLocale(locale));

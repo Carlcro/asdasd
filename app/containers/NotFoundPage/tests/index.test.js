@@ -14,7 +14,7 @@ describe('<NotFound />', () => {
     expect(
       renderedComponent.contains(
         <FormattedMessage
-          id="boilerplate.containers.NotFoundPage.header"
+          id="containers.NotFoundPage.header"
           defaultMessage="Page not found."
         />,
       ),

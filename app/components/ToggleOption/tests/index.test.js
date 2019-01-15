@@ -9,7 +9,7 @@ describe('<ToggleOption />', () => {
     const defaultEnMessage = 'someContent';
     const message = defineMessages({
       enMessage: {
-        id: 'boilerplate.containers.LocaleToggle.en',
+        id: 'containers.LocaleToggle.en',
         defaultMessage: defaultEnMessage,
       },
     });
@@ -27,10 +27,10 @@ describe('<ToggleOption />', () => {
 
   it('should display `value`(two letter language code) when `message` is absent', () => {
     const renderedComponent = mount(
-      <IntlProvider locale="de">
-        <ToggleOption value="de" />
+      <IntlProvider locale="sv">
+        <ToggleOption value="sv" />
       </IntlProvider>,
     );
-    expect(renderedComponent.text()).toBe('de');
+    expect(renderedComponent.text()).toBe('sv');
   });
 });

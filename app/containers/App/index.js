@@ -2,12 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Col, Grid, Row } from 'react-bootstrap';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Dashboard from '../Dashboard/Loadable';
 import DayTypes from '../DayTypes/Loadable';
 import LocaleToggle from '../LocaleToggle';
-
 import NavMenu from '../NavMenu/NavMenu';
 import '@progress/kendo-theme-default/dist/all.css';
 import 'react-toastify/dist/ReactToastify.css';

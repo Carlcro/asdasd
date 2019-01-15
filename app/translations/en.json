@@ -1,9 +1,4 @@
 {
-  "boilerplate.containers.LocaleToggle.de": "de",
-  "boilerplate.containers.LocaleToggle.en": "en",
-  "boilerplate.containers.NavMenu.dayTypes": "Day types",
-  "boilerplate.containers.NavMenu.home": "Home",
-  "boilerplate.containers.NotFoundPage.header": "Page not found.",
   "containers.Common.add": "Add",
   "containers.Common.delete": "Delete",
   "containers.Common.edit": "Edit",
@@ -41,5 +36,11 @@
   "containers.DayTypes.name": "Name",
   "containers.DayTypes.save": "Save",
   "containers.DayTypes.shortName": "Short name",
-  "containers.DayTypes.sign": "Sign"
+  "containers.DayTypes.sign": "Sign",
+  "containers.LocaleToggle.en": "en",
+  "containers.LocaleToggle.sv": "sv",
+  "containers.NavMenu.dayTypes": "Day types",
+  "containers.NavMenu.home": "Home",
+  "containers.NotFoundPage.goBack": "Click here to go back to Dashboard",
+  "containers.NotFoundPage.header": "Page not found."
 }

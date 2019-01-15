@@ -10,22 +10,22 @@ describe('<Toggle />', () => {
     const defaultDeMessage = 'someOtherContent';
     const messages = defineMessages({
       en: {
-        id: 'boilerplate.containers.LocaleToggle.en',
+        id: 'containers.LocaleToggle.en',
         defaultMessage: defaultEnMessage,
       },
-      de: {
-        id: 'boilerplate.containers.LocaleToggle.en',
+      sv: {
+        id: 'containers.LocaleToggle.sv',
         defaultMessage: defaultDeMessage,
       },
     });
     const renderedComponent = shallow(
       <IntlProvider locale="en">
-        <Toggle values={['en', 'de']} messages={messages} />
+        <Toggle values={['en', 'sv']} messages={messages} />
       </IntlProvider>,
     );
     expect(
       renderedComponent.contains(
-        <Toggle values={['en', 'de']} messages={messages} />,
+        <Toggle values={['en', 'sv']} messages={messages} />,
       ),
     ).toBe(true);
     expect(renderedComponent.find('option')).toHaveLength(0);
