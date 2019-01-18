@@ -28,7 +28,7 @@ import {
 } from '../../../services/Dashboard/substituteInquiriesService';
 import { getShifts } from '../../../services/Dashboard/substituteShiftsService';
 
-const apiEndpoint = 'http://localhost:44387/api/dashboard/substitute';
+const apiEndpoint = '/dashboard/substitute';
 
 function balancesUrl(dateFrom, dateTo) {
   return `${apiEndpoint}/balances/${dateFrom}/${dateTo}`;
