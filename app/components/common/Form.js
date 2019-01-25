@@ -50,11 +50,7 @@ class Form extends Component {
   };
 
   handleColorPickerChange = ({ value }) => {
-    // TODO: Event dont have name property for some reason so "color" has to be hard coded This needs to be fixed
     const errors = { ...this.state.errors }; // eslint-disable-line react/no-access-state-in-setstate
-    // const errorMessage = this.validateProperty(input);
-    // if (errorMessage) errors[input.name] = errorMessage;
-    // else delete errors[input.name];
 
     const data = { ...this.state.data }; // eslint-disable-line react/no-access-state-in-setstate
     data.color = value;

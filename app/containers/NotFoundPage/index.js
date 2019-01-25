@@ -5,7 +5,6 @@
  */
 
 import { FormattedMessage } from 'react-intl';
-import { Button, Row } from 'react-bootstrap';
 
 import messages from './messages';
 
@@ -20,11 +19,11 @@ class NotFound extends Component {
     return (
       <div>
         <FormattedMessage {...messages.header} />
-        <Row>
-          <Button bsStyle="info" onClick={this.handleNavigation}>
+        <div>
+          <button onClick={this.handleNavigation}>
             <FormattedMessage {...messages.goBack} />
-          </Button>
-        </Row>
+          </button>
+        </div>
       </div>
     );
   }
