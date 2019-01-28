@@ -4,8 +4,9 @@ import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Timeline from '../Timeline';
+import { Content, Column, Notification } from 'rbx';
 import 'react-toastify/dist/ReactToastify.css';
-import Grid from '@material-ui/core/Grid';
+import 'rbx/index.css';
 
 export default function App() {
   return (
@@ -14,14 +15,15 @@ export default function App() {
         <meta name="description" content=" A Time Care Pool application" />
       </Helmet>
       <ToastContainer />
-      <Grid container spacing={24}>
-        <Grid  item xs={6}>
+
+      <Column.Group>
+        <Column size="half" offset="one-quarter">
           <Switch>
             <Route exact path="/" component={Timeline} />
             <Route path="" component={NotFoundPage} />
           </Switch>
-        </Grid>
-      </Grid>
+        </Column>
+      </Column.Group>
     </div>
   );
 }

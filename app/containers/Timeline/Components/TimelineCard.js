@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import LikeAndComment from './LikeAndComment';
 import Comments from './Comments';
 import Commentate from './Commentate';
-import { Paper } from '@material-ui/core';
+import { Card } from 'rbx';
+import styled from 'styled-components';
+
+const Content = styled.div`
+  padding: 30px;
+`;
 
 class TimelineCard extends Component {
   render() {
     return (
       <div>
-        <Paper>
-          <h1>Carl Cronsioe</h1>
-          <div className="content">
+        <Card>
+          <Card.Header>Carl Cronsioe</Card.Header>
+          <Content>
             <p>
               Tiled say decay spoil now walls meant house. My mr interest
               thoughts screened of outweigh removing. Evening society musical
@@ -20,11 +25,11 @@ class TimelineCard extends Component {
               nature elinor talked now for excuse result. Admitted add peculiar
               get joy doubtful.{' '}
             </p>
-            <LikeAndComment />
-            <Comments />
-            <Commentate />
-          </div>
-        </Paper>
+          </Content>
+          <LikeAndComment />
+          <Comments />
+          <Commentate />
+        </Card>
       </div>
     );
   }
