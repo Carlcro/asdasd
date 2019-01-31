@@ -15,6 +15,7 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
+import 'font-awesome/css/font-awesome.css';
 
 // Import root app
 import App from 'containers/App';
