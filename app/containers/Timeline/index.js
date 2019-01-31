@@ -5,10 +5,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,9 +17,8 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectTimeline from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import TimelineCard from './Components/TimelineCard';
-
+import { timelineData } from './mockData';
 
 function Timeline() {
   return (
@@ -28,14 +27,14 @@ function Timeline() {
         <title>Timeline</title>
         <meta name="description" content="Description of Timeline" />
       </Helmet>
-      <TimelineCard />
+      <div>
+        {timelineData.map(item => (
+          <TimelineCard key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 }
-
-Timeline.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = createStructuredSelector({
   timeline: makeSelectTimeline(),

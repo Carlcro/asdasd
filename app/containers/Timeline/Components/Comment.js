@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   border-radius: 25px;
@@ -16,15 +17,15 @@ const AuthorName = styled.a`
   font-weight: bold;
 `;
 
-class Comment extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <AuthorName>Frida Löwenadler</AuthorName>
-        <p>Någon som ska spela Anthem demon ikväll på Xbox?</p>
-      </Wrapper>
-    );
-  }
-}
+const Comment = ({ item }) => (
+  <Wrapper>
+    <AuthorName>{item.name}</AuthorName>
+    <p>{item.body}</p>
+  </Wrapper>
+);
+
+Comment.propTypes = {
+  item: PropTypes.object,
+};
 
 export default Comment;
