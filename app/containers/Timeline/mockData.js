@@ -18,18 +18,21 @@ export const commentData = [
     id: 1,
     timelineId: 1,
     name: 'Johan Cronsioe',
+    avatar: 'https://api.adorable.io/avatars/186/Johan.png',
     body: 'Bra sagt',
   },
   {
     id: 2,
     timelineId: 2,
     name: 'Erik Blomqvist',
+    avatar: 'https://api.adorable.io/avatars/186/Erik.png',
     body: 'Sorry använder inte internet ',
   },
   {
     id: 3,
     timelineId: 2,
     name: 'Robert Huselius',
+    avatar: 'https://api.adorable.io/avatars/186/Robert.png',
     body: 'Bra och krazy kontent',
   },
 ];

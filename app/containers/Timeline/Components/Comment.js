@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Image } from 'rbx';
+
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
@@ -7,9 +9,14 @@ const Wrapper = styled.div`
   background: #f2f3f5;
   padding: 20px;
   width: 300px;
-  height: 100px;
+  height: 80px;
   padding: 12px;
-  margin: 10px;
+  margin: 0px 0px 10px 75px;
+`;
+
+const Avatar = styled.div`
+  float: left;
+  padding: 13px 20px 0px 10px;
 `;
 
 const AuthorName = styled.a`
@@ -18,10 +25,17 @@ const AuthorName = styled.a`
 `;
 
 const Comment = ({ item }) => (
-  <Wrapper>
-    <AuthorName>{item.name}</AuthorName>
-    <p>{item.body}</p>
-  </Wrapper>
+  <div>
+    <Avatar>
+      <Image.Container size={48}>
+        <Image rounded src={item.avatar} />
+      </Image.Container>
+    </Avatar>
+    <Wrapper>
+      <AuthorName>{item.name}</AuthorName>
+      <p>{item.body}</p>
+    </Wrapper>
+  </div>
 );
 
 Comment.propTypes = {
