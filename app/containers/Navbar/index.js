@@ -13,9 +13,11 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { Navbar, Button, Control, Field } from 'rbx';
+import { Navbar, Button, Control, Field, Column } from 'rbx';
+import NavItem from './NavItem';
 // import makeSelectNavbar from './selectors';
 import styled from 'styled-components';
+import MessagesList from './MessagesList';
 
 import reducer from './reducer';
 import saga from './saga';
@@ -27,6 +29,26 @@ const Wrapper = styled.a`
 
 /* eslint-disable react/prefer-stateless-function */
 export class NavigationBar extends React.Component {
+  state = {
+    style: {
+      message: '#1a2947',
+      bell: '#1a2947',
+      question: '#1a2947',
+      arrowDown: '#1a2947',
+      users: '#1a2947',
+    },
+  };
+  handleClick = event => {
+    console.log(event.target.id);
+    const style = this.state.style;
+    const color = style[event.target.id] === 'white' ? '#1a2947' : 'white';
+    style[event.target.id] = color;
+
+    this.setState({
+      style,
+    });
+  };
+
   render() {
     return (
       <Wrapper>
@@ -66,6 +88,8 @@ export class NavigationBar extends React.Component {
                   </Control>
                 </Field>
               </Navbar.Item>
+            </Navbar.Segment>
+            <Navbar.Segment align="end">
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
                 Carl
               </Navbar.Item>
@@ -75,30 +99,88 @@ export class NavigationBar extends React.Component {
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
                 Skapa
               </Navbar.Item>
-              <Navbar.Item>
-                <span style={{ color: 'white' }}>
-                  <i className="fas fa-users fa-lg" />
-                </span>
+              <Navbar.Item dropdown>
+                <Navbar.Link arrowless>
+                  <Navbar.Link arrowless>
+                    <NavItem
+                      onClick={this.handleClick}
+                      id="users"
+                      className="fas fa-users fa-lg"
+                      style={{ color: this.state.style.users }}
+                    />
+                  </Navbar.Link>
+                </Navbar.Link>
+                <Navbar.Dropdown align="right">
+                  <Navbar.Item>About</Navbar.Item>
+                  <Navbar.Item>Jobs</Navbar.Item>
+                  <Navbar.Item>Contact</Navbar.Item>
+                  <Navbar.Divider />
+                  <Navbar.Item>Report an issue</Navbar.Item>
+                </Navbar.Dropdown>
               </Navbar.Item>
-              <Navbar.Item>
-                <span style={{ color: 'white' }}>
-                  <i className="fab fa-facebook-messenger fa-lg" />{' '}
-                </span>
+              <Navbar.Item dropdown>
+                <Navbar.Link arrowless>
+                  <NavItem
+                    onClick={this.handleClick}
+                    id="message"
+                    className="fab fa-facebook-messenger fa-lg"
+                    style={{ color: this.state.style.message }}
+                  />
+                </Navbar.Link>
+                <Navbar.Dropdown align="right">
+                  <MessagesList />
+                </Navbar.Dropdown>
               </Navbar.Item>
-              <Navbar.Item>
-                <span style={{ color: 'white' }}>
-                  <i className="fas fa-bell fa-lg" />{' '}
-                </span>
+              <Navbar.Item dropdown>
+                <Navbar.Link arrowless>
+                  <NavItem
+                    onClick={this.handleClick}
+                    id="bell"
+                    className="fas fa-bell fa-lg"
+                    style={{ color: this.state.style.bell }}
+                  />
+                </Navbar.Link>
+                <Navbar.Dropdown align="right">
+                  <Navbar.Item>About</Navbar.Item>
+                  <Navbar.Item>Jobs</Navbar.Item>
+                  <Navbar.Item>Contact</Navbar.Item>
+                  <Navbar.Divider />
+                  <Navbar.Item>Report an issue</Navbar.Item>
+                </Navbar.Dropdown>
               </Navbar.Item>
-              <Navbar.Item>
-                <span style={{ color: 'white' }}>
-                  <i className="fas fa-question-circle fa-lg" />{' '}
-                </span>
+              <Navbar.Item dropdown>
+                <Navbar.Link arrowless>
+                  <NavItem
+                    onClick={this.handleClick}
+                    id="question"
+                    className="fas fa-question-circle fa-lg"
+                    style={{ color: this.state.style.question }}
+                  />
+                </Navbar.Link>
+                <Navbar.Dropdown align="right">
+                  <Navbar.Item>About</Navbar.Item>
+                  <Navbar.Item>Jobs</Navbar.Item>
+                  <Navbar.Item>Contact</Navbar.Item>
+                  <Navbar.Divider />
+                  <Navbar.Item>Report an issue</Navbar.Item>
+                </Navbar.Dropdown>
               </Navbar.Item>
-              <Navbar.Item>
-                <span style={{ color: 'white' }}>
-                  <i className="fas fa-sort-down fa-lg" />{' '}
-                </span>
+              <Navbar.Item dropdown>
+                <Navbar.Link arrowless>
+                  <NavItem
+                    onClick={this.handleClick}
+                    id="arrowDown"
+                    className="fas fa-sort-down fa-lg"
+                    style={{ color: this.state.style.arrowDown }}
+                  />
+                </Navbar.Link>
+                <Navbar.Dropdown align="right">
+                  <Navbar.Item>About</Navbar.Item>
+                  <Navbar.Item>Jobs</Navbar.Item>
+                  <Navbar.Item>Contact</Navbar.Item>
+                  <Navbar.Divider />
+                  <Navbar.Item>Report an issue</Navbar.Item>
+                </Navbar.Dropdown>
               </Navbar.Item>
             </Navbar.Segment>
           </Navbar.Menu>
