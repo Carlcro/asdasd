@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import logo from '../../images/Bild2.jpg';
+import { Image } from 'rbx';
 
-const Avatar = styled.img`
+const Avatar = styled.div`
   float: left;
-  vertical-align: middle;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin: 0 20px 0 20px;
+  margin: 10px 10px 10px 10px;
 `;
 
 const GroupName = styled.h2`
@@ -17,6 +13,9 @@ const GroupName = styled.h2`
 `;
 
 const StyledMessage = styled.div`
+  display: flex;
+  align-items: center;
+  height: 68px;
   border-bottom: 1px solid #dddfe2;
   border-top: 1px solid #dddfe2;
   background-color: white;
@@ -25,16 +24,24 @@ const StyledMessage = styled.div`
   }
 `;
 
+const Content = styled.div``;
+
 class MessageItem extends Component {
   render() {
     return (
       <StyledMessage>
-        <Avatar src={this.props.message.avatar} alt="Avatar" />
-        <GroupName>{this.props.message.name}</GroupName>
-        <p>
-          {this.props.message.message.slice(0, 25)}
-          ...
-        </p>
+        <Avatar style={{ maxHeight: 200 }}>
+          <Image.Container size={48}>
+            <Image rounded src={this.props.message.avatar} />
+          </Image.Container>
+        </Avatar>
+        <Content>
+          <GroupName>{this.props.message.name}</GroupName>
+          <p>
+            {this.props.message.message.slice(0, 35)}
+            ...
+          </p>
+        </Content>
       </StyledMessage>
     );
   }
