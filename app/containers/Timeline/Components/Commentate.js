@@ -1,14 +1,10 @@
 import React from 'react';
-import { Control, Input, Image } from 'rbx';
+import { Control, Input } from 'rbx';
 import styled from 'styled-components';
+import Avatar from '../../../components/Avatar';
 
 const Wrapper = styled.div`
   height: 150px;
-`;
-
-const Avatar = styled.div`
-  float: left;
-  padding: 20px 10px 20px 20px;
 `;
 
 const InputField = styled.div`
@@ -20,14 +16,21 @@ const InputField = styled.div`
 const Commentate = () => (
   <div>
     <Wrapper>
-      <Avatar>
-        <Image.Container size={48}>
-          <Image rounded src="https://api.adorable.io/avatars/186/Carl2.png" />
-        </Image.Container>
-      </Avatar>
+      <Avatar
+        size={48}
+        avatar="https://api.adorable.io/avatars/186/Carl2.png"
+      />
       <InputField>
         <Control>
-          <Input type="text" size="medium" />
+          <Input
+            style={{
+              backgroundColor: '#f2f3f5',
+              borderRadius: 25,
+            }}
+            placeholder="kommentera..."
+            type="text"
+            size="medium"
+          />
         </Control>
       </InputField>
     </Wrapper>

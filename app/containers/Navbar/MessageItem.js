@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Image } from 'rbx';
-
-const Avatar = styled.div`
-  float: left;
-  margin: 10px 10px 10px 10px;
-`;
+import Avatar from '../../components/Avatar';
 
 const GroupName = styled.h2`
   font-weight: bold;
@@ -24,29 +19,24 @@ const StyledMessage = styled.div`
   }
 `;
 
-const Content = styled.div``;
-
+// eslint-disable-next-line react/prefer-stateless-function
 class MessageItem extends Component {
   render() {
     return (
       <StyledMessage>
-        <Avatar style={{ maxHeight: 200 }}>
-          <Image.Container size={48}>
-            <Image rounded src={this.props.message.avatar} />
-          </Image.Container>
-        </Avatar>
-        <Content>
-          <GroupName>{this.props.message.name}</GroupName>
-          <p>
-            {this.props.message.message.slice(0, 35)}
-            ...
-          </p>
-        </Content>
+        <Avatar size={48} avatar={this.props.message.avatar} />
+        <GroupName>{this.props.message.name}</GroupName>
+        <p>
+          {this.props.message.message.slice(0, 35)}
+          ...
+        </p>
       </StyledMessage>
     );
   }
 }
 
-MessageItem.propTypes = {};
+MessageItem.propTypes = {
+  message: PropTypes.object,
+};
 
 export default MessageItem;

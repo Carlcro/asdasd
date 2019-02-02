@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Image } from 'rbx';
-
 import PropTypes from 'prop-types';
+import Avatar from '../../../components/Avatar';
 
 const Wrapper = styled.div`
   border-radius: 25px;
@@ -14,11 +13,6 @@ const Wrapper = styled.div`
   margin: 0px 0px 10px 75px;
 `;
 
-const Avatar = styled.div`
-  float: left;
-  padding: 13px 20px 0px 10px;
-`;
-
 const AuthorName = styled.a`
   height: 50px;
   font-weight: bold;
@@ -26,11 +20,7 @@ const AuthorName = styled.a`
 
 const Comment = ({ item }) => (
   <div>
-    <Avatar>
-      <Image.Container size={48}>
-        <Image rounded src={item.avatar} />
-      </Image.Container>
-    </Avatar>
+    <Avatar size={48} avatar={item.avatar} />
     <Wrapper>
       <AuthorName>{item.name}</AuthorName>
       <p>{item.body}</p>

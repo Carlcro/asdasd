@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  font-size: small;
+  font-size: smaller;
   & > p {
     display: inline-block;
     margin: 0 20px 0 10px;
@@ -14,14 +14,15 @@ const Wrapper = styled.div`
   }
 `;
 
+// eslint-disable-next-line react/prefer-stateless-function
 class MessagesMenue extends Component {
   render() {
     return (
       <Wrapper>
         <p style={{ fontWeight: 'bold' }}>Senaste (2)</p>
         <p>Meddelandeförfrågningar</p>
-        <a>Ny grupp</a>
-        <a>Nytt meddelande</a>
+        <p>Ny grupp</p>
+        <p>Nytt meddelande</p>
       </Wrapper>
     );
   }
