@@ -7,6 +7,7 @@ import Comments from './Comments';
 import Commentate from './Commentate';
 import Avatar from '../../../components/Avatar';
 import Reactions from './Reactions';
+import UsernameLink from '../../../components/UsernameLink/index';
 
 const Content = styled.div`
   padding: 20px;
@@ -30,7 +31,7 @@ const TimelineCard = ({ item }) => (
         <StyledHeader>
           <Avatar size={48} avatar={item.avatar} />
           <div>
-            <p style={{ fontWeight: 'bold' }}>{item.name}</p>
+            <UsernameLink name={item.name} id={item.id} />
             <TimeStamp>
               {item.timeStamp} · <i className="fas fa-user" />
             </TimeStamp>

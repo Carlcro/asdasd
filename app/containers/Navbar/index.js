@@ -17,6 +17,7 @@ import { Navbar, Button, Control, Field } from 'rbx';
 import styled from 'styled-components';
 
 import NavItem from './NavItem';
+import Avatar from '../../components/Avatar';
 // import makeSelectNavbar from './selectors';
 import MessagesList from './MessagesList';
 
@@ -72,9 +73,10 @@ export class NavigationBar extends React.Component {
                         color: 'black',
                         width: 500,
                         height: 36,
+                        borderRadius: 3,
                       }}
                       type="text"
-                      placeholder="Search"
+                      placeholder="  Search"
                     />
                   </Control>
                   <Control>
@@ -92,6 +94,10 @@ export class NavigationBar extends React.Component {
             </Navbar.Segment>
             <Navbar.Segment align="end">
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
+                <Avatar
+                  size={32}
+                  avatar="https://api.adorable.io/avatars/186/Carl2.png"
+                />
                 Carl
               </Navbar.Item>
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>

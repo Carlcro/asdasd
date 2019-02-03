@@ -1,5 +1,5 @@
 {
-  "name": "timecare-pool",
+  "name": "face-clone",
   "version": "1.0.0",
   "description": "Time Care Pool Application",
   "engines": {
@@ -37,6 +37,7 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "heroku-postbuild": "npm run build",
     "prettify": "prettier --write"
   },
   "lint-staged": {

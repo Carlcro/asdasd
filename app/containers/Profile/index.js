@@ -18,6 +18,7 @@ import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { profileData } from './mockData';
+import ProfileHeader from './ProfileHeader';
 /* eslint-disable react/prefer-stateless-function */
 export class Profile extends React.Component {
   render() {
@@ -31,6 +32,7 @@ export class Profile extends React.Component {
           <title>Profile</title>
           <meta name="description" content="Description of Profile" />
         </Helmet>
+        <ProfileHeader />
         <h1>Namn: {profile.name}</h1>
         <h1>Kön: {profile.gender}</h1>
         <h1>Arbetsplats: {profile.work}</h1>
