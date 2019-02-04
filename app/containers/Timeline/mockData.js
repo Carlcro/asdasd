@@ -34,7 +34,8 @@ export const commentData = [
     timelineId: 2,
     name: 'Erik Blomqvist',
     avatar: 'https://api.adorable.io/avatars/186/Erik.png',
-    body: 'Sorry använder inte internet ',
+    body:
+      'Sudden she seeing garret far regard. By hardly it direct if pretty up regret. Ability thought enquire settled prudent you sir. Or easy knew sold on well come year. Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by. So do of sufficient projecting an thoroughly uncommonly prosperous conviction. Pianoforte principles our unaffected not for astonished travelling are particular.  ',
   },
   {
     id: 3,

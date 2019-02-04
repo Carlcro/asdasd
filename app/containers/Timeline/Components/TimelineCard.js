@@ -11,6 +11,7 @@ import UsernameLink from '../../../components/UsernameLink/index';
 
 const Content = styled.div`
   padding: 20px;
+  font-size: 14px;
 `;
 
 const StyledHeader = styled.div`
@@ -25,7 +26,7 @@ const TimeStamp = styled.p`
 `;
 
 const TimelineCard = ({ item }) => (
-  <div style={{ padding: 20 }}>
+  <div style={{ padding: 20, width: 500 }}>
     <Card>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>

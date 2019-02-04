@@ -11,7 +11,10 @@ import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 const UsernameLink = props => (
-  <Link style={{ fontWeight: 'bold' }} to={`/profile/${props.id}`}>
+  <Link
+    style={{ fontWeight: 'bold', marginRight: 5 }}
+    to={`/profile/${props.id}`}
+  >
     {props.name}
   </Link>
 );

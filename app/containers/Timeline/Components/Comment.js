@@ -5,18 +5,18 @@ import Avatar from '../../../components/Avatar';
 import UsernameLink from '../../../components/UsernameLink/index';
 
 const Wrapper = styled.div`
+  display: flex;
   border-radius: 25px;
   background: #f2f3f5;
   padding: 20px;
-  width: 300px;
-  height: 80px;
   padding: 12px;
-  margin: 0px 0px 10px 75px;
+  margin: 0px 40px 10px 0px;
+  flex-wrap: wrap;
 `;
 
 const Comment = ({ item }) => (
   <div>
-    <Avatar size={48} avatar={item.avatar} />
+    <Avatar size={32} avatar={item.avatar} />
     <Wrapper>
       <UsernameLink name={item.name} id={item.id} />
       <p>{item.body}</p>

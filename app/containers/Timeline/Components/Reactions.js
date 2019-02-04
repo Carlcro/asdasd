@@ -13,7 +13,10 @@ const Reactions = props => (
   <Wrapper>
     {props.likes > 0 && (
       <div>
-        <i style={{ color: '#417ffc' }} className="far fa-thumbs-up fa-lg" />
+        <i
+          style={{ color: '#417ffc', marginRight: 5 }}
+          className="far fa-thumbs-up fa-lg"
+        />
         {props.likes}
       </div>
     )}

@@ -6,9 +6,11 @@ const Wrapper = styled.div`
   justify-content: space-around;
   border-bottom: 1px solid #dddfe2;
   border-top: 1px solid #dddfe2;
-  height: 65px;
+  height: 42px;
   align-items: center;
   font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 13px;
 `;
 
 const Like = styled.a`
