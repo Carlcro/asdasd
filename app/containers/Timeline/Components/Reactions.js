@@ -2,26 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Wrapper = styled.div``;
-
-const Line = styled.div`
-  display: inline;
-  margin-left: ${props => props.leftMargin}px;
+const Wrapper = styled.div`
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0 50px 0 50px;
 `;
 
 const Reactions = props => (
   <Wrapper>
-    <Line leftMargin={20}>
-      {props.comments > 0 && (
+    {props.likes > 0 && (
+      <div>
         <i style={{ color: '#417ffc' }} className="far fa-thumbs-up fa-lg" />
-      )}{' '}
-      {props.likes}
-    </Line>
-    {props.comments > 0 && (
-      <Line leftMargin={470}>
-        {props.comments} {props.comments > 1 ? ' kommentarer' : 'kommentar'}
-      </Line>
+        {props.likes}
+      </div>
     )}
+    {props.comments} {props.comments > 1 ? ' kommentarer' : 'kommentar'}
   </Wrapper>
 );
 

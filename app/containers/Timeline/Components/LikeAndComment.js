@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  height: 50px;
+  display: flex;
+  justify-content: space-around;
   border-bottom: 1px solid #dddfe2;
   border-top: 1px solid #dddfe2;
-  margin: 20px 0 20px 0;
-  padding: 10px;
-  text-align: center;
+  height: 65px;
+  align-items: center;
   font-weight: 600;
 `;
 
 const Like = styled.a`
   color: #616770;
-  margin: 100px;
 `;
 
 const Comment = styled.a`
   color: #616770;
-  margin: 100px;
 `;
 
 // eslint-disable-next-line react/prefer-stateless-function
