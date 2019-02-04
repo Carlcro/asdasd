@@ -15,6 +15,7 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { Navbar, Button, Control, Field } from 'rbx';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import NavItem from './NavItem';
 import Avatar from '../../components/Avatar';
@@ -56,11 +57,12 @@ export class NavigationBar extends React.Component {
       <Wrapper>
         <Navbar transparent style={{ backgroundColor: '#4267b2' }}>
           <Navbar.Brand>
-            <Navbar.Item href="#">
+            <Navbar.Item as={Link} to="/">
               <span style={{ color: 'white' }}>
                 <i className="fab fa-facebook fa-2x" />
               </span>
             </Navbar.Item>
+            <Navbar.Burger />
           </Navbar.Brand>
           <Navbar.Menu>
             <Navbar.Segment align="start">
@@ -117,13 +119,7 @@ export class NavigationBar extends React.Component {
                     />
                   </Navbar.Link>
                 </Navbar.Link>
-                <Navbar.Dropdown align="right">
-                  <Navbar.Item>About</Navbar.Item>
-                  <Navbar.Item>Jobs</Navbar.Item>
-                  <Navbar.Item>Contact</Navbar.Item>
-                  <Navbar.Divider />
-                  <Navbar.Item>Report an issue</Navbar.Item>
-                </Navbar.Dropdown>
+                <Navbar.Dropdown align="right" />
               </Navbar.Item>
               <Navbar.Item dropdown>
                 <Navbar.Link arrowless>
@@ -147,13 +143,7 @@ export class NavigationBar extends React.Component {
                     style={{ color: this.state.style.bell }}
                   />
                 </Navbar.Link>
-                <Navbar.Dropdown align="right">
-                  <Navbar.Item>About</Navbar.Item>
-                  <Navbar.Item>Jobs</Navbar.Item>
-                  <Navbar.Item>Contact</Navbar.Item>
-                  <Navbar.Divider />
-                  <Navbar.Item>Report an issue</Navbar.Item>
-                </Navbar.Dropdown>
+                <Navbar.Dropdown align="right" />
               </Navbar.Item>
               <Navbar.Item dropdown>
                 <Navbar.Link arrowless>
@@ -164,13 +154,7 @@ export class NavigationBar extends React.Component {
                     style={{ color: this.state.style.question }}
                   />
                 </Navbar.Link>
-                <Navbar.Dropdown align="right">
-                  <Navbar.Item>About</Navbar.Item>
-                  <Navbar.Item>Jobs</Navbar.Item>
-                  <Navbar.Item>Contact</Navbar.Item>
-                  <Navbar.Divider />
-                  <Navbar.Item>Report an issue</Navbar.Item>
-                </Navbar.Dropdown>
+                <Navbar.Dropdown align="right" />
               </Navbar.Item>
               <Navbar.Item dropdown>
                 <Navbar.Link arrowless>
@@ -181,13 +165,7 @@ export class NavigationBar extends React.Component {
                     style={{ color: this.state.style.arrowDown }}
                   />
                 </Navbar.Link>
-                <Navbar.Dropdown align="right">
-                  <Navbar.Item>About</Navbar.Item>
-                  <Navbar.Item>Jobs</Navbar.Item>
-                  <Navbar.Item>Contact</Navbar.Item>
-                  <Navbar.Divider />
-                  <Navbar.Item>Report an issue</Navbar.Item>
-                </Navbar.Dropdown>
+                <Navbar.Dropdown align="right" />
               </Navbar.Item>
             </Navbar.Segment>
           </Navbar.Menu>

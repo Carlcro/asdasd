@@ -18,8 +18,8 @@ const GlobalBackground = styled.div`
 export default function App() {
   return (
     <div>
-      <Helmet titleTemplate="%s - Time Care Pool" defaultTitle="Time Care Pool">
-        <meta name="description" content=" A Time Care Pool application" />
+      <Helmet titleTemplate="%s - FaceClone" defaultTitle="FaceClone">
+        <meta name="description" content=" A Clone of Facebook" />
       </Helmet>
       <ToastContainer />
       <GlobalBackground>

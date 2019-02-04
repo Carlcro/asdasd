@@ -1,13 +1,21 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const NavItem = props => {
-  return (
-    <span onClick={e => props.onClick(e)}>
-      <i style={props.style} id={props.id} className={props.className} />
-    </span>
-  );
+const NavItem = props => (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+  <span onClick={e => props.onClick(e)} role="link">
+    <i style={props.style} id={props.id} className={props.className} />
+  </span>
+);
+
+NavItem.propTypes = {
+  onClick: PropTypes.func,
+  style: PropTypes.string,
+  id: PropTypes.number,
+  className: PropTypes.string,
 };
 
 export default NavItem;
 
-//"fas fa-sort-down fa-lg"
+// "fas fa-sort-down fa-lg"
