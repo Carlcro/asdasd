@@ -4,8 +4,8 @@
  *
  */
 
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
@@ -16,25 +16,39 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectTimeline from './selectors';
 import reducer from './reducer';
-import saga from './saga';
+import { timelineData as saga } from './saga';
 import TimelineCard from './Components/TimelineCard';
-import { timelineData } from './mockData';
+import { loadTimeline } from './actions';
 
-function Timeline() {
-  return (
-    <div>
-      <Helmet>
-        <title>Timeline</title>
-        <meta name="description" content="Description of Timeline" />
-      </Helmet>
+// eslint-disable-next-line react/prefer-stateless-function
+class Timeline extends Component {
+  componentDidMount() {
+    this.props.loadTimeline();
+  }
+
+  render() {
+    return (
       <div>
-        {timelineData.map(item => (
-          <TimelineCard key={item.id} item={item} />
-        ))}
+        <Helmet>
+          <title>Timeline</title>
+          <meta name="description" content="Description of Timeline" />
+        </Helmet>
+        {this.props.timeline.length > 0 && (
+          <div>
+            {this.props.timeline.map(item => (
+              <TimelineCard key={item.id} item={item} />
+            ))}
+          </div>
+        )}
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+Timeline.propTypes = {
+  timeline: PropTypes.object,
+  loadTimeline: PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
   timeline: makeSelectTimeline(),
@@ -42,7 +56,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    loadTimeline: () => dispatch(loadTimeline()),
   };
 }
 

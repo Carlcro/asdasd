@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
-import { commentData } from '../mockData';
 
-const Comments = ({ id }) => (
+const Comments = ({ comments }) => (
   <div>
-    {commentData.filter(x => x.timelineId === id).map(item => (
-      <Comment item={item} />
+    {comments.map(comment => (
+      <Comment item={comment} />
     ))}
   </div>
 );
 
 Comments.propTypes = {
-  id: PropTypes.number,
+  comments: PropTypes.object,
 };
 
 export default Comments;

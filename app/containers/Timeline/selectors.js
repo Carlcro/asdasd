@@ -16,7 +16,7 @@ const selectTimelineDomain = state => state.get('timeline', initialState);
  */
 
 const makeSelectTimeline = () =>
-  createSelector(selectTimelineDomain, substate => substate.toJS());
+  createSelector(selectTimelineDomain, substate => substate.get('timeline'));
 
 export default makeSelectTimeline;
 export { selectTimelineDomain };

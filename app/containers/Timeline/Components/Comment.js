@@ -19,7 +19,7 @@ const Comment = ({ item }) => (
     <Avatar size={32} avatar={item.avatar} />
     <Wrapper>
       <UsernameLink name={item.name} id={item.id} />
-      <p>{item.body}</p>
+      <span>{item.body}</span>
     </Wrapper>
   </div>
 );

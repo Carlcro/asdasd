@@ -42,9 +42,9 @@ const TimelineCard = ({ item }) => (
       <Content>
         <p>{item.body}</p>
       </Content>
-      <Reactions likes={item.likes} comments={item.comments} />
+      <Reactions likes={item.likes} comments={item.comments.length} />
       <LikeAndComment />
-      <Comments id={item.id} />
+      <Comments comments={item.comments} />
       <Commentate />
     </Card>
   </div>
