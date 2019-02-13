@@ -33,6 +33,7 @@ class Timeline extends Component {
           <title>Timeline</title>
           <meta name="description" content="Description of Timeline" />
         </Helmet>
+        <h2>Hej</h2>
         {this.props.timeline.length > 0 && (
           <div>
             {this.props.timeline.map(item => (
