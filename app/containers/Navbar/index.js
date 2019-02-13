@@ -76,9 +76,10 @@ export class NavigationBar extends React.Component {
                         width: 500,
                         height: 36,
                         borderRadius: 3,
+                        paddingLeft: 10,
                       }}
                       type="text"
-                      placeholder="  Search"
+                      placeholder="Search"
                     />
                   </Control>
                   <Control>

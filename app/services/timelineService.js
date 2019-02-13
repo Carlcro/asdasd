@@ -11,3 +11,25 @@ export function getTimeline() {
     }, 0);
   });
 }
+
+export function saveComment(comment, id) {
+  const timelineCard = timelineData.find(x => x.id === id);
+
+  const newComment = {
+    name: 'Carl Cronsioe',
+    avatar: 'https://api.adorable.io/avatars/186/Carl2.png',
+    body: comment,
+  };
+
+  timelineCard.comments.push(newComment);
+
+  const newTimeline = timelineData.filter(x => x.id !== id);
+
+  newTimeline.push(timelineCard);
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(newTimeline);
+    }, 0);
+  });
+}
