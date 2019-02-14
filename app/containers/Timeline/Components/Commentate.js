@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Input } from 'rbx';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Avatar from '../../../components/Avatar';
 
 const Wrapper = styled.div`
@@ -18,18 +19,45 @@ const StyledInput = styled(Input)`
   margin-right: 10px;
   font-size: 13px;
   padding-left: 10px;
+  outline: none;
 `;
 
-const Commentate = () => (
-  <div>
-    <Wrapper>
-      <Avatar
-        size={32}
-        avatar="https://api.adorable.io/avatars/186/Carl2.png"
-      />
-      <StyledInput placeholder="kommentera..." type="text" />
-    </Wrapper>
-  </div>
-);
+export default class Commentate extends Component {
+  state = { value: '' };
 
-export default Commentate;
+  handleChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  keyPress = e => {
+    if (e.keyCode === 13) {
+      this.props.onSubmit(e.target.value, this.props.id);
+      this.setState({ value: '' });
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        <Wrapper>
+          <Avatar
+            size={32}
+            avatar="https://api.adorable.io/avatars/186/Carl2.png"
+          />
+          <StyledInput
+            onKeyDown={this.keyPress}
+            placeholder="kommentera..."
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </Wrapper>
+      </div>
+    );
+  }
+}
+
+Commentate.propTypes = {
+  onSubmit: PropTypes.func,
+  id: PropTypes.number,
+};

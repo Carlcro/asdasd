@@ -18,13 +18,17 @@ import makeSelectTimeline from './selectors';
 import reducer from './reducer';
 import { timelineData as saga } from './saga';
 import TimelineCard from './Components/TimelineCard';
-import { loadTimeline } from './actions';
+import { loadTimeline, saveComment } from './actions';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Timeline extends Component {
   componentDidMount() {
     this.props.loadTimeline();
   }
+
+  handleNewComment = (comment, id) => {
+    this.props.saveComment(comment, id);
+  };
 
   render() {
     return (
@@ -36,7 +40,11 @@ class Timeline extends Component {
         {this.props.timeline.length > 0 && (
           <div>
             {this.props.timeline.map(item => (
-              <TimelineCard key={item.id} item={item} />
+              <TimelineCard
+                handleNewComment={this.handleNewComment}
+                key={item.id}
+                item={item}
+              />
             ))}
           </div>
         )}
@@ -48,6 +56,7 @@ class Timeline extends Component {
 Timeline.propTypes = {
   timeline: PropTypes.object,
   loadTimeline: PropTypes.func,
+  saveComment: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -57,6 +66,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     loadTimeline: () => dispatch(loadTimeline()),
+    saveComment: (comment, id) => dispatch(saveComment(comment, id)),
   };
 }
 
