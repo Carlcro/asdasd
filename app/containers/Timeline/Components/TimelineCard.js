@@ -37,6 +37,7 @@ const TimeStamp = styled.p`
 
 const TimelineCard = ({ item, handleNewComment }) => (
   <Wrapper>
+    <h1>Test</h1>
     <Card>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>
