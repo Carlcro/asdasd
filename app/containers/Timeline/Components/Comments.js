@@ -5,13 +5,13 @@ import Comment from './Comment';
 const Comments = ({ comments }) => (
   <div>
     {comments.map(comment => (
-      <Comment item={comment} />
+      <Comment key={comment.id} item={comment} />
     ))}
   </div>
 );
 
 Comments.propTypes = {
-  comments: PropTypes.object,
+  comments: PropTypes.array,
 };
 
 export default Comments;

@@ -25,11 +25,13 @@ class MessageItem extends Component {
     return (
       <StyledMessage>
         <Avatar size={48} avatar={this.props.message.avatar} />
-        <GroupName>{this.props.message.name}</GroupName>
-        <p>
-          {this.props.message.message.slice(0, 35)}
-          ...
-        </p>
+        <div>
+          <GroupName>{this.props.message.name}</GroupName>
+          <p>
+            {this.props.message.message.slice(0, 35)}
+            ...
+          </p>
+        </div>
       </StyledMessage>
     );
   }

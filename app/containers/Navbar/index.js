@@ -62,7 +62,6 @@ export class NavigationBar extends React.Component {
                 <i className="fab fa-facebook fa-2x" />
               </span>
             </Navbar.Item>
-            <Navbar.Burger />
           </Navbar.Brand>
           <Navbar.Menu>
             <Navbar.Segment align="start">

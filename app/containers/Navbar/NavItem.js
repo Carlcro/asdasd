@@ -11,8 +11,8 @@ const NavItem = props => (
 
 NavItem.propTypes = {
   onClick: PropTypes.func,
-  style: PropTypes.string,
-  id: PropTypes.number,
+  style: PropTypes.object,
+  id: PropTypes.string,
   className: PropTypes.string,
 };
 

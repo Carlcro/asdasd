@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import MessageItem from './MessageItem';
 import mockMessagesData from './mockMessagesData';
 import MessagesMenue from './MessagesMenue';
+
+const MoreMessages = styled.a`
+  display: flex;
+  justify-content: center;
+  margin: 5px 5px;
+`;
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MessagesList extends Component {
@@ -15,9 +22,9 @@ class MessagesList extends Component {
       >
         <MessagesMenue />
         {mockMessagesData.map(message => (
-          <MessageItem message={message} />
+          <MessageItem key={message.id} message={message} />
         ))}
-        <p>Visa tidigare...</p>
+        <MoreMessages href="/messages">Visa tidigare...</MoreMessages>
       </div>
     );
   }

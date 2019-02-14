@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   font-size: smaller;
+  padding: 0 0 4px 10px;
   & > p {
     display: inline-block;
     margin: 0 20px 0 10px;
@@ -19,10 +20,14 @@ class MessagesMenue extends Component {
   render() {
     return (
       <Wrapper>
-        <p style={{ fontWeight: 'bold' }}>Senaste (2)</p>
-        <p>Meddelandeförfrågningar</p>
-        <p>Ny grupp</p>
-        <p>Nytt meddelande</p>
+        <a href="/#" style={{ fontWeight: 'bold', color: 'black' }}>
+          Senaste (2)
+        </a>
+        <a href="/#" style={{ color: 'grey' }}>
+          Meddelandeförfrågningar
+        </a>
+        <a href="/#">Ny grupp</a>
+        <a href="/#">Nytt meddelande</a>
       </Wrapper>
     );
   }

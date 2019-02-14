@@ -54,7 +54,7 @@ class Timeline extends Component {
 }
 
 Timeline.propTypes = {
-  timeline: PropTypes.object,
+  timeline: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadTimeline: PropTypes.func,
   saveComment: PropTypes.func,
 };
