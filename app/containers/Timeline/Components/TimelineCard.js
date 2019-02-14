@@ -15,12 +15,12 @@ const Content = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 20;
-  width: 600;
+  padding: 20px;
+  width: 500px;
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    width: 400;
+    width: 400px;
   }
 `;
 
