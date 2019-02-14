@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card } from 'rbx';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -25,33 +25,42 @@ const TimeStamp = styled.p`
   color: #616770;
 `;
 
-const TimelineCard = ({ item }) => (
-  <div style={{ padding: 20, width: 500 }}>
-    <Card>
-      <Card.Header style={{ padding: 5 }}>
-        <StyledHeader>
-          <Avatar size={48} avatar={item.avatar} />
-          <div>
-            <UsernameLink name={item.name} id={item.id} />
-            <TimeStamp>
-              {item.timeStamp} · <i className="fas fa-user" />
-            </TimeStamp>
-          </div>
-        </StyledHeader>
-      </Card.Header>
-      <Content>
-        <p>{item.body}</p>
-      </Content>
-      <Reactions likes={item.likes} comments={item.comments.length} />
-      <LikeAndComment />
-      <Comments comments={item.comments} />
-      <Commentate />
-    </Card>
-  </div>
-);
+// eslint-disable-next-line react/prefer-stateless-function
+export default class TimelineCard extends Component {
+  render() {
+    return (
+      <div style={{ padding: 20, width: 500 }}>
+        <Card>
+          <Card.Header style={{ padding: 5 }}>
+            <StyledHeader>
+              <Avatar size={48} avatar={this.props.item.avatar} />
+              <div>
+                <UsernameLink
+                  name={this.props.item.name}
+                  id={this.props.item.id}
+                />
+                <TimeStamp>
+                  {this.props.item.timeStamp} · <i className="fas fa-user" />
+                </TimeStamp>
+              </div>
+            </StyledHeader>
+          </Card.Header>
+          <Content>
+            <p>{this.props.item.body}</p>
+          </Content>
+          <Reactions
+            likes={this.props.item.likes}
+            comments={this.props.item.comments.length}
+          />
+          <LikeAndComment />
+          <Comments comments={this.props.item.comments} />
+          <Commentate />
+        </Card>
+      </div>
+    );
+  }
+}
 
 TimelineCard.propTypes = {
   item: PropTypes.object,
 };
-
-export default TimelineCard;
