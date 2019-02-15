@@ -7,19 +7,35 @@ const Wrapper = styled.div`
   justify-content: space-around;
   border-bottom: 1px solid #dddfe2;
   border-top: 1px solid #dddfe2;
+  align-items: stretch;
+
   height: 42px;
-  align-items: center;
   font-weight: 600;
   margin-bottom: 20px;
   font-size: 13px;
+  padding: 4px;
 `;
 
 const Like = styled.a`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   color: #616770;
+  :hover {
+    background-color: rgb(246, 246, 247);
+  }
 `;
 
 const Comment = styled.a`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   color: #616770;
+  :hover {
+    background-color: rgb(246, 246, 247);
+  }
 `;
 
 // eslint-disable-next-line react/prefer-stateless-function
