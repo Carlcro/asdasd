@@ -14,6 +14,6 @@ export default defineMessages({
   },
   goBack: {
     id: `${scope}.goBack`,
-    defaultMessage: 'Click here to go back to Dashboard',
+    defaultMessage: 'Click here to go back to Timeline',
   },
 });

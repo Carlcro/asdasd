@@ -41,6 +41,6 @@
   "containers.LocaleToggle.sv": "sv",
   "containers.NavMenu.dayTypes": "Dagtyper",
   "containers.NavMenu.home": "Hem",
-  "containers.NotFoundPage.goBack": "Gå tillbaka till dashboard",
+  "containers.NotFoundPage.goBack": "Gå tillbaka till tidslinjen",
   "containers.NotFoundPage.header": "Sidan kunde inte hittas"
 }

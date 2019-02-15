@@ -41,6 +41,6 @@
   "containers.LocaleToggle.sv": "sv",
   "containers.NavMenu.dayTypes": "Day types",
   "containers.NavMenu.home": "Home",
-  "containers.NotFoundPage.goBack": "Click here to go back to Dashboard",
+  "containers.NotFoundPage.goBack": "Click here to go back to Timeline",
   "containers.NotFoundPage.header": "Page not found."
 }
