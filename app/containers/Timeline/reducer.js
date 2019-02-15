@@ -19,6 +19,9 @@ import {
   SAVE_COMMENT,
   SAVE_COMMENT_SUCCESS,
   SAVE_COMMENT_ERROR,
+  SAVE_LIKE,
+  SAVE_LIKE_SUCCESS,
+  SAVE_LIKE_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -41,6 +44,12 @@ function dashboardReducer(state = initialState, action) {
     case SAVE_COMMENT_SUCCESS:
       return state.set('timeline', action.timeline).set('loading', false);
     case SAVE_COMMENT_ERROR:
+      return state.set('error', action.error).set('loading', false);
+    case SAVE_LIKE:
+      return state.set('loading', true).set('error', false);
+    case SAVE_LIKE_SUCCESS:
+      return state.set('timeline', action.timeline).set('loading', false);
+    case SAVE_LIKE_ERROR:
       return state.set('error', action.error).set('loading', false);
     default:
       return state;

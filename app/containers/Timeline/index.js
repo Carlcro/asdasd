@@ -14,11 +14,12 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import _ from 'lodash';
 import makeSelectTimeline from './selectors';
 import reducer from './reducer';
 import { timelineData as saga } from './saga';
 import TimelineCard from './Components/TimelineCard';
-import { loadTimeline, saveComment } from './actions';
+import { loadTimeline, saveComment, saveLike } from './actions';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Timeline extends Component {
@@ -30,7 +31,12 @@ class Timeline extends Component {
     this.props.saveComment(comment, id);
   };
 
+  handleLike = id => {
+    this.props.saveLike(id);
+  };
+
   render() {
+    const sortedArray = _.sortBy(this.props.timeline, 'id');
     return (
       <div>
         <Helmet>
@@ -39,9 +45,10 @@ class Timeline extends Component {
         </Helmet>
         {this.props.timeline.length > 0 && (
           <div>
-            {this.props.timeline.map(item => (
+            {sortedArray.map(item => (
               <TimelineCard
                 handleNewComment={this.handleNewComment}
+                handleLike={this.handleLike}
                 key={item.id}
                 item={item}
               />
@@ -57,6 +64,7 @@ Timeline.propTypes = {
   timeline: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadTimeline: PropTypes.func,
   saveComment: PropTypes.func,
+  saveLike: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -67,6 +75,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadTimeline: () => dispatch(loadTimeline()),
     saveComment: (comment, id) => dispatch(saveComment(comment, id)),
+    saveLike: id => dispatch(saveLike(id)),
   };
 }
 

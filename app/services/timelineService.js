@@ -33,3 +33,22 @@ export function saveComment(comment, id) {
     }, 0);
   });
 }
+
+export function saveLike(id) {
+  const timelineCard = timelineData.find(x => x.id === id);
+  timelineCard.liked = !timelineCard.liked;
+
+  timelineCard.likes = timelineCard.liked
+    ? timelineCard.likes + 1
+    : timelineCard.likes - 1;
+
+  const newTimeline = timelineData.filter(x => x.id !== id);
+
+  newTimeline.push(timelineCard);
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(newTimeline);
+    }, 0);
+  });
+}

@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   padding: 20px;
   width: 500px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     /* For mobile phones: */
     width: 100%;
   }
@@ -35,7 +35,7 @@ const TimeStamp = styled.p`
   color: #616770;
 `;
 
-const TimelineCard = ({ item, handleNewComment }) => (
+const TimelineCard = ({ item, handleNewComment, handleLike }) => (
   <Wrapper>
     <Card>
       <Card.Header style={{ padding: 5 }}>
@@ -53,7 +53,7 @@ const TimelineCard = ({ item, handleNewComment }) => (
         <p>{item.body}</p>
       </Content>
       <Reactions likes={item.likes} comments={item.comments.length} />
-      <LikeAndComment />
+      <LikeAndComment id={item.id} liked={item.liked} handleLike={handleLike} />
       <Comments comments={item.comments} />
       <Commentate id={item.id} onSubmit={handleNewComment} />
     </Card>
@@ -63,6 +63,7 @@ const TimelineCard = ({ item, handleNewComment }) => (
 TimelineCard.propTypes = {
   item: PropTypes.object,
   handleNewComment: PropTypes.func,
+  handleLike: PropTypes.func,
 };
 
 export default TimelineCard;

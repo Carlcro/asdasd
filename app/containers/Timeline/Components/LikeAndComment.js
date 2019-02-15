@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,21 +24,37 @@ const Comment = styled.a`
 
 // eslint-disable-next-line react/prefer-stateless-function
 class LikeAndComment extends Component {
+  liked = liked => {
+    if (liked)
+      return (
+        <i
+          style={{ marginRight: 5, color: '#3784ff' }}
+          className="fas fa-thumbs-up fa-lg"
+        />
+      );
+    return <i style={{ marginRight: 5 }} className="far fa-thumbs-up fa-lg" />;
+  };
+
   render() {
     return (
       <Wrapper>
-        <Like>
-          <i className="far fa-thumbs-up fa-lg" />
-          {'  '}
+        <Like onClick={() => this.props.handleLike(this.props.id)}>
+          {this.liked(this.props.liked)}
           Gilla
         </Like>
         <Comment>
-          <i className="far fa-comment-alt fa-lg" />
-          {'  '} Kommentera
+          <i style={{ marginRight: 5 }} className="far fa-comment-alt fa-lg" />
+          Kommentera
         </Comment>
       </Wrapper>
     );
   }
 }
+
+LikeAndComment.propTypes = {
+  handleLike: PropTypes.func,
+  id: PropTypes.number,
+  liked: PropTypes.bool,
+};
 
 export default LikeAndComment;
