@@ -40,10 +40,7 @@ export default class Commentate extends Component {
     return (
       <div>
         <Wrapper>
-          <Avatar
-            size={32}
-            avatar="https://api.adorable.io/avatars/186/Carl2.png"
-          />
+          <Avatar size={32} name="Carl2" />
           <StyledInput
             onKeyDown={this.keyPress}
             placeholder="kommentera..."

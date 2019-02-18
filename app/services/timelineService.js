@@ -1,37 +1,22 @@
 import { timelineData } from '../MockData/TimelineData';
+import http from './httpService';
 
-export function getTimeline() {
-  const returnData = {
-    data: timelineData,
-  };
-
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(returnData);
-    }, 0);
-  });
+export function getTimeline(requestUrl) {
+  return http.get(requestUrl);
 }
 
-export function saveComment(comment, id) {
-  const timelineCard = timelineData.find(x => x.id === id);
+export function saveDayType(dayType) {
+  if (dayType.body.id) {
+    const body = { ...dayType.body };
+    delete body.id;
+    return http.put(dayType.requestURL, body);
+  }
 
-  const newComment = {
-    name: 'Carl Cronsioe',
-    avatar: 'https://api.adorable.io/avatars/186/Carl2.png',
-    body: comment,
-  };
+  return http.post(dayType.requestURL, dayType.body);
+}
 
-  timelineCard.comments.push(newComment);
-
-  const newTimeline = timelineData.filter(x => x.id !== id);
-
-  newTimeline.push(timelineCard);
-
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(newTimeline);
-    }, 0);
-  });
+export function saveComment(payload) {
+  return http.put(payload.requestURL, payload.content);
 }
 
 export function saveLike(id) {

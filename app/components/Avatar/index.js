@@ -23,7 +23,7 @@ const Avatar = props => (
           maxHeight: 4000,
         }}
         rounded
-        src={props.avatar}
+        src={`https://api.adorable.io/avatars/186/${props.name}.png`}
       />
     </Image.Container>
   </StyledAvatar>
@@ -31,7 +31,7 @@ const Avatar = props => (
 
 Avatar.propTypes = {
   size: PropTypes.number,
-  avatar: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Avatar;

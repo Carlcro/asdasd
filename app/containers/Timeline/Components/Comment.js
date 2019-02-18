@@ -16,10 +16,10 @@ const Wrapper = styled.div`
 
 const Comment = ({ item }) => (
   <div>
-    <Avatar size={32} avatar={item.avatar} />
+    <Avatar size={32} avatar={item.userId.name} />
     <Wrapper>
-      <UsernameLink name={item.name} id={item.id} />
-      <span>{item.body}</span>
+      <UsernameLink name={item.userId.name} id={item.id} />
+      <span>{item.content}</span>
     </Wrapper>
   </div>
 );

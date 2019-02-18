@@ -10,8 +10,6 @@ const StyledName = styled(Link)`
   position: absolute;
   font-size: 24px;
   font-weight: 500;
-  line-height: 30px;
-  max-width: 275px;
   color: #fff;
   :hover {
     color: #fff;
@@ -42,9 +40,9 @@ const ProfileHeader = () => (
       <SubWrapper>
         <Avatar
           size={128}
-          avatar="https://api.adorable.io/avatars/186/Johan.png"
+          avatar="https://api.adorable.io/avatars/186/Carl2.png"
         />
-        <StyledName to={`/profile/${1}`}>Hej</StyledName>
+        <StyledName to={`/profile/${1}`}>Carl Cronsioe</StyledName>
       </SubWrapper>
     </HeaderImage>
   </Wrapper>

@@ -96,10 +96,7 @@ export class NavigationBar extends React.Component {
             </Navbar.Segment>
             <Navbar.Segment align="end">
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
-                <Avatar
-                  size={32}
-                  avatar="https://api.adorable.io/avatars/186/Carl2.png"
-                />
+                <Avatar size={32} name="Carl2" />
                 Carl
               </Navbar.Item>
               <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
