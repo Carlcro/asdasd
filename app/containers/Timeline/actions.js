@@ -28,10 +28,10 @@ export function timelineLoadingError(error) {
   };
 }
 
-export function saveComment(comment, id) {
+export function saveComment(content, id) {
   return {
     type: SAVE_COMMENT,
-    comment,
+    content,
     id,
   };
 }

@@ -1,7 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Card } from 'rbx';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { distanceInWords } from 'date-fns';
 import LikeAndComment from './LikeAndComment';
 import Comments from './Comments';
 import Commentate from './Commentate';
@@ -40,11 +42,12 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
     <Card>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>
-          <Avatar size={48} avatar={item.avatar} />
+          <Avatar size={48} avatar={item.author.name} />
           <div>
-            <UsernameLink name={item.name} id={item.id} />
+            <UsernameLink name={item.author.name} id={item.id} />
             <TimeStamp>
-              {item.timeStamp} · <i className="fas fa-user" />
+              {distanceInWords(new Date(item.timeStamp), new Date())} ·{' '}
+              <i className="fas fa-user" />
             </TimeStamp>
           </div>
         </StyledHeader>
@@ -55,7 +58,7 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
       <Reactions likes={item.likes} comments={item.comments.length} />
       <LikeAndComment id={item.id} liked={item.liked} handleLike={handleLike} />
       <Comments comments={item.comments} />
-      <Commentate id={item.id} onSubmit={handleNewComment} />
+      <Commentate id={item._id} onSubmit={handleNewComment} />
     </Card>
   </Wrapper>
 );

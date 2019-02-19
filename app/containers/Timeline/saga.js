@@ -16,7 +16,8 @@ import {
 
 const apiEndpoint = '/timeline';
 
-function timelineUrl() {
+function timelineUrl(id) {
+  if (id) return `${apiEndpoint}/${id}`;
   return `${apiEndpoint}`;
 }
 /**
@@ -33,14 +34,12 @@ export function* fetchTimeline() {
 }
 
 export function* saveNewComment(action) {
-  const requestURL = timelineUrl();
+  const requestURL = timelineUrl(action.id);
   try {
-    const timeline = yield call(
-      saveComment,
-      action.comment,
-      action.id,
+    const timeline = yield call(saveComment, {
       requestURL,
-    );
+      content: action.content,
+    });
     yield put(commentSaved(timeline));
   } catch (err) {
     yield put(commentSavedError(err));
