@@ -36,7 +36,7 @@ class Timeline extends Component {
   };
 
   render() {
-    const sortedArray = _.sortBy(this.props.timeline, 'id');
+    const sortedArray = _.sortBy(this.props.timeline, 'timeStamp');
     return (
       <div>
         <Helmet>

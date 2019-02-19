@@ -9,6 +9,7 @@
  * case YOUR_ACTION_CONSTANT:
  *   return state.set('yourStateVariable', true);
  */
+/* eslint-disable no-underscore-dangle */
 
 import { fromJS } from 'immutable';
 
@@ -31,7 +32,7 @@ export const initialState = fromJS({
   timeline: [],
 });
 
-function dashboardReducer(state = initialState, action) {
+function timelineReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_TIMELINE:
       return state.set('loading', true).set('error', false);
@@ -41,8 +42,13 @@ function dashboardReducer(state = initialState, action) {
       return state.set('error', action.error).set('loading', false);
     case SAVE_COMMENT:
       return state.set('loading', true).set('error', false);
-    case SAVE_COMMENT_SUCCESS:
-      return state.set('timeline', action.timeline).set('loading', false);
+    case SAVE_COMMENT_SUCCESS: {
+      const timeline = state
+        .get('timeline')
+        .filter(x => x._id !== action.timeline._id);
+      timeline.push(action.timeline);
+      return state.set('timeline', timeline).set('loading', false);
+    }
     case SAVE_COMMENT_ERROR:
       return state.set('error', action.error).set('loading', false);
     case SAVE_LIKE:
@@ -56,4 +62,4 @@ function dashboardReducer(state = initialState, action) {
   }
 }
 
-export default dashboardReducer;
+export default timelineReducer;
