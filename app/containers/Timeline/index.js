@@ -31,8 +31,8 @@ class Timeline extends Component {
     this.props.saveComment(comment, id);
   };
 
-  handleLike = id => {
-    this.props.saveLike(id);
+  handleLike = (id, liked) => {
+    this.props.saveLike(id, liked);
   };
 
   render() {
@@ -75,7 +75,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadTimeline: () => dispatch(loadTimeline()),
     saveComment: (comment, id) => dispatch(saveComment(comment, id)),
-    saveLike: id => dispatch(saveLike(id)),
+    saveLike: (id, liked) => dispatch(saveLike(id, liked)),
   };
 }
 

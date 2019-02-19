@@ -40,7 +40,7 @@ export default class Commentate extends Component {
     return (
       <div>
         <Wrapper>
-          <Avatar size={32} name="Carl2" />
+          <Avatar size={32} id="Carl2" />
           <StyledInput
             onKeyDown={this.keyPress}
             placeholder="kommentera..."

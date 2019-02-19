@@ -7,7 +7,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Column } from 'rbx';
 import Timeline from '../Timeline';
 import Profile from '../Profile';
-import NavigationBar from '../Navbar/index';
+// import NavigationBar from '../Navbar/index';
+// import Login from '../Login';
 import 'react-toastify/dist/ReactToastify.css';
 import 'rbx/index.css';
 
@@ -23,7 +24,6 @@ export default function App() {
       </Helmet>
       <ToastContainer />
       <GlobalBackground>
-        <NavigationBar />
         <Column.Group>
           <Column size="half" offset="one-quarter">
             <Switch>

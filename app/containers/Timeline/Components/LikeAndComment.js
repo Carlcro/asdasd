@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -40,8 +41,8 @@ const Comment = styled.a`
 
 // eslint-disable-next-line react/prefer-stateless-function
 class LikeAndComment extends Component {
-  liked = liked => {
-    if (liked)
+  renderLike = likes => {
+    if (this.isLiked(likes))
       return (
         <i
           style={{ marginRight: 5, color: '#3784ff' }}
@@ -51,11 +52,23 @@ class LikeAndComment extends Component {
     return <i style={{ marginRight: 5 }} className="far fa-thumbs-up fa-lg" />;
   };
 
+  isLiked(likes) {
+    const found = likes.some(el => el._id === '5c6b0c1224afb2f7ec3b94a9');
+    return found;
+  }
+
   render() {
     return (
       <Wrapper>
-        <Like onClick={() => this.props.handleLike(this.props.id)}>
-          {this.liked(this.props.liked)}
+        <Like
+          onClick={() =>
+            this.props.handleLike(
+              this.props.id,
+              !this.isLiked(this.props.likes),
+            )
+          }
+        >
+          {this.renderLike(this.props.likes)}
           Gilla
         </Like>
         <Comment>
@@ -70,7 +83,7 @@ class LikeAndComment extends Component {
 LikeAndComment.propTypes = {
   handleLike: PropTypes.func,
   id: PropTypes.number,
-  liked: PropTypes.bool,
+  likes: PropTypes.array,
 };
 
 export default LikeAndComment;

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -16,9 +17,9 @@ const Wrapper = styled.div`
 
 const Comment = ({ item }) => (
   <div>
-    <Avatar size={32} avatar={item.userId.name} />
+    <Avatar size={32} id={item.userId._id} />
     <Wrapper>
-      <UsernameLink name={item.userId.name} id={item.id} />
+      <UsernameLink name={item.userId.name} id={item._id} />
       <span>{item.content}</span>
     </Wrapper>
   </div>

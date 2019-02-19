@@ -42,9 +42,9 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
     <Card>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>
-          <Avatar size={48} avatar={item.author.name} />
+          <Avatar size={48} id={item._id} />
           <div>
-            <UsernameLink name={item.author.name} id={item.id} />
+            <UsernameLink name={item.author.name} id={item.author._id} />
             <TimeStamp>
               {distanceInWords(new Date(item.timeStamp), new Date())} ·{' '}
               <i className="fas fa-user" />
@@ -56,7 +56,11 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
         <p>{item.body}</p>
       </Content>
       <Reactions likes={item.likes} comments={item.comments.length} />
-      <LikeAndComment id={item.id} liked={item.liked} handleLike={handleLike} />
+      <LikeAndComment
+        id={item._id}
+        handleLike={handleLike}
+        likes={item.likes}
+      />
       <Comments comments={item.comments} />
       <Commentate id={item._id} onSubmit={handleNewComment} />
     </Card>

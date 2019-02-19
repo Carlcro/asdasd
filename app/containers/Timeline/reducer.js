@@ -53,8 +53,13 @@ function timelineReducer(state = initialState, action) {
       return state.set('error', action.error).set('loading', false);
     case SAVE_LIKE:
       return state.set('loading', true).set('error', false);
-    case SAVE_LIKE_SUCCESS:
-      return state.set('timeline', action.timeline).set('loading', false);
+    case SAVE_LIKE_SUCCESS: {
+      const timeline = state
+        .get('timeline')
+        .filter(x => x._id !== action.timeline._id);
+      timeline.push(action.timeline);
+      return state.set('timeline', timeline).set('loading', false);
+    }
     case SAVE_LIKE_ERROR:
       return state.set('error', action.error).set('loading', false);
     default:

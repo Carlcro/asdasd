@@ -11,15 +11,17 @@ const Wrapper = styled.div`
 
 const Reactions = props => (
   <Wrapper>
-    {props.likes > 0 && (
-      <div>
-        <i
-          style={{ color: '#417ffc', marginRight: 5 }}
-          className="far fa-thumbs-up fa-lg"
-        />
-        {props.likes.length}
-      </div>
-    )}
+    <div>
+      {props.likes.length > 0 && (
+        <div>
+          <i
+            style={{ color: '#417ffc', marginRight: 5 }}
+            className="far fa-thumbs-up fa-lg"
+          />
+          {props.likes.length}
+        </div>
+      )}
+    </div>
     {props.comments} {props.comments > 1 ? ' kommentarer' : 'kommentar'}
   </Wrapper>
 );

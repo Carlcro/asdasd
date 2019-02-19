@@ -24,7 +24,7 @@ class MessageItem extends Component {
   render() {
     return (
       <StyledMessage>
-        <Avatar size={48} avatar={this.props.message.avatar} />
+        <Avatar size={48} id="carl@cronsioe.se" />
         <div>
           <GroupName>{this.props.message.name}</GroupName>
           <p>

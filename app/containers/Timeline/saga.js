@@ -24,6 +24,10 @@ function timelineUrl(id) {
 function commentUrl(id) {
   return `${apiEndpoint}/comment/${id}`;
 }
+
+function likeUrl(id) {
+  return `${apiEndpoint}/like/${id}`;
+}
 /**
  * Timeline request/response handler
  */
@@ -51,9 +55,12 @@ export function* saveNewComment(action) {
 }
 
 export function* saveNewLike(action) {
-  const requestURL = timelineUrl();
+  const requestURL = likeUrl(action.id);
   try {
-    const timeline = yield call(saveLike, action.id, requestURL);
+    const { data: timeline } = yield call(saveLike, {
+      requestURL,
+      liked: action.liked,
+    });
     yield put(likeSaved(timeline));
   } catch (err) {
     yield put(likeSavedError(err));

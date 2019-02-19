@@ -48,10 +48,11 @@ export function commentSavedError(error) {
   };
 }
 
-export function saveLike(id) {
+export function saveLike(id, liked) {
   return {
     type: SAVE_LIKE,
     id,
+    liked,
   };
 }
 export function likeSaved(timeline) {

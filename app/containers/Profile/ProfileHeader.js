@@ -38,10 +38,7 @@ const ProfileHeader = () => (
   <Wrapper>
     <HeaderImage>
       <SubWrapper>
-        <Avatar
-          size={128}
-          avatar="https://api.adorable.io/avatars/186/Carl2.png"
-        />
+        <Avatar size={128} is="carl@cronsioe.se" />
         <StyledName to={`/profile/${1}`}>Carl Cronsioe</StyledName>
       </SubWrapper>
     </HeaderImage>
