@@ -56,5 +56,5 @@ export default class Commentate extends Component {
 
 Commentate.propTypes = {
   onSubmit: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.string,
 };

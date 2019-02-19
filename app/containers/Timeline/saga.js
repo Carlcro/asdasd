@@ -20,6 +20,10 @@ function timelineUrl(id) {
   if (id) return `${apiEndpoint}/${id}`;
   return `${apiEndpoint}`;
 }
+
+function commentUrl(id) {
+  return `${apiEndpoint}/comment/${id}`;
+}
 /**
  * Timeline request/response handler
  */
@@ -34,9 +38,9 @@ export function* fetchTimeline() {
 }
 
 export function* saveNewComment(action) {
-  const requestURL = timelineUrl(action.id);
+  const requestURL = commentUrl(action.id);
   try {
-    const timeline = yield call(saveComment, {
+    const { data: timeline } = yield call(saveComment, {
       requestURL,
       content: action.content,
     });

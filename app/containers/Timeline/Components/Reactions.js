@@ -17,7 +17,7 @@ const Reactions = props => (
           style={{ color: '#417ffc', marginRight: 5 }}
           className="far fa-thumbs-up fa-lg"
         />
-        {props.likes}
+        {props.likes.length}
       </div>
     )}
     {props.comments} {props.comments > 1 ? ' kommentarer' : 'kommentar'}
@@ -26,7 +26,7 @@ const Reactions = props => (
 
 Reactions.propTypes = {
   comments: PropTypes.number,
-  likes: PropTypes.number,
+  likes: PropTypes.array,
 };
 
 export default Reactions;

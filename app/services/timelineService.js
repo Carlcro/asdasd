@@ -16,7 +16,7 @@ export function saveDayType(dayType) {
 }
 
 export function saveComment(payload) {
-  return http.put(payload.requestURL, payload.content);
+  return http.put(payload.requestURL, { content: payload.content });
 }
 
 export function saveLike(id) {

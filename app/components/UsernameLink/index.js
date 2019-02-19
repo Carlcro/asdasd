@@ -21,7 +21,7 @@ const UsernameLink = props => (
 
 UsernameLink.propTypes = {
   name: PropTypes.string,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string,
 };
 
 export default UsernameLink;
