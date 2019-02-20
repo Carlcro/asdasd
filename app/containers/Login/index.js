@@ -9,6 +9,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
+import { Card, Input, Content } from 'rbx';
 
 import injectSaga from 'utils/injectSaga';
 import styled from 'styled-components';
@@ -16,8 +17,9 @@ import saga from './saga';
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: 'center';
-  align-items: 'center';
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
 `;
 
 /* eslint-disable react/prefer-stateless-function */
@@ -30,10 +32,14 @@ export class Login extends React.Component {
           <meta name="description" content="Description of Login" />
         </Helmet>
         <Wrapper>
-          <h3>email</h3>
-          <input type="text" />
-          <h3>password</h3>
-          <input type="password" />
+          <Card>
+            <Card.Content>
+              <Content>
+                <Input type="text" placeholder="e-mail" />
+                <Input type="password" placeholder="password" />
+              </Content>
+            </Card.Content>
+          </Card>
         </Wrapper>
       </div>
     );
