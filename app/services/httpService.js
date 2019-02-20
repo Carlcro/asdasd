@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL =
+  process.env === 'production'
+    ? 'https://face-clone-api.herokuapp.com/api'
+    : 'http://localhost:3001/api';
 
 axios.interceptors.response.use(null, error => {
   const expectedError =

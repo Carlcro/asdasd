@@ -11,7 +11,14 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
+import styled from 'styled-components';
 import saga from './saga';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
+`;
 
 /* eslint-disable react/prefer-stateless-function */
 export class Login extends React.Component {
@@ -22,12 +29,12 @@ export class Login extends React.Component {
           <title>Login</title>
           <meta name="description" content="Description of Login" />
         </Helmet>
-        <div>
+        <Wrapper>
           <h3>email</h3>
           <input type="text" />
           <h3>password</h3>
-          <input type="text" />
-        </div>
+          <input type="password" />
+        </Wrapper>
       </div>
     );
   }
