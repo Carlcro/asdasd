@@ -61,15 +61,15 @@ export class Login extends Form {
     return (
       <div>
         <Helmet>
-          <title>Login</title>
-          <meta name="description" content="Description of Login" />
+          <title>Log in</title>
+          <meta name="description" content="Description of Log in" />
         </Helmet>
         <Wrapper>
           <Card>
             <Card.Content>
               <Content>
                 <div>
-                  <h1>Login</h1>
+                  <h1>Log in</h1>
                   <form onSubmit={this.handleSubmit}>
                     {this.renderInput('email', 'Email')}
                     {this.renderInput('password', 'Password', 'password')}

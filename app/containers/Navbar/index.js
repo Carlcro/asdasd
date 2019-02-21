@@ -76,7 +76,7 @@ export class NavigationBar extends React.Component {
                 onClick={this.handleLogout}
                 style={{ fontWeight: 'bold', color: 'white' }}
               >
-                Logout
+                Log out
               </Navbar.Item>
             ) : (
               <Navbar.Item
@@ -84,7 +84,7 @@ export class NavigationBar extends React.Component {
                 to="/login"
                 style={{ fontWeight: 'bold', color: 'white' }}
               >
-                Login
+                Log in
               </Navbar.Item>
             )}
           </Navbar.Brand>
