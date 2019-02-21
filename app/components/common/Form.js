@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
+import { Button } from 'rbx';
 import Input from './Input';
 import Select from './Select';
-import ColorPicker from './ColorPicker';
 
 class Form extends Component {
   state = {
@@ -39,9 +39,6 @@ class Form extends Component {
 
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors }; // eslint-disable-line react/no-access-state-in-setstate
-    const errorMessage = this.validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
 
     const data = { ...this.state.data }; // eslint-disable-line react/no-access-state-in-setstate
     data[input.name] = input.value;
@@ -58,26 +55,13 @@ class Form extends Component {
     this.setState({ data, errors });
   };
 
-  renderButton(label, type = 'button') {
+  renderButton(label, type = 'button', color = 'primary') {
     return (
-      <button type={type} className="btn btn-primary">
+      <Button style={{ marginTop: 20 }} type={type} color={color} fullwidth>
         {label}
-      </button>
+      </Button>
     );
   }
-
-  renderColorPicker = (name, label) => {
-    const { data } = this.state;
-
-    return (
-      <ColorPicker
-        label={label}
-        name={name}
-        value={data[name]}
-        onChange={this.handleColorPickerChange}
-      />
-    );
-  };
 
   renderSelect(name, label, options) {
     const { data, errors } = this.state;

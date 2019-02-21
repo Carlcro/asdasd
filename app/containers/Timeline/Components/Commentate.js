@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { Input } from 'rbx';
 import styled from 'styled-components';
@@ -38,11 +39,12 @@ export default class Commentate extends Component {
   };
 
   render() {
+    const user = getCurrentUser();
     return (
       <div>
-        {getCurrentUser() ? (
+        {user ? (
           <Wrapper>
-            <Avatar size={32} id="Carl2" />
+            <Avatar size={32} id={user._id} />
             <StyledInput
               onKeyDown={this.keyPress}
               placeholder="kommentera..."

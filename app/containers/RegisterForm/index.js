@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 /**
  *
  * Login
@@ -13,7 +14,8 @@ import { Redirect, Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Form from '../../components/common/Form';
-import { login, getCurrentUser } from '../../services/authService';
+import { getCurrentUser, loginWithJwt } from '../../services/authService';
+import { register } from '../../services/userService';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,34 +24,35 @@ const Wrapper = styled.div`
 `;
 
 /* eslint-disable react/prefer-stateless-function */
-export class Login extends Form {
+export class RegisterForm extends Form {
   state = {
     data: { email: '', password: '' },
     errors: {},
   };
 
   schema = {
-    email: Joi.string()
+    username: Joi.string()
       .required()
-      .label('Email')
-      .email(),
+      .email()
+      .label('Username'),
     password: Joi.string()
       .required()
+      .min(5)
       .label('Password'),
+    name: Joi.string()
+      .required()
+      .label('Name'),
   };
 
   doSubmit = async () => {
     try {
-      const { data } = this.state;
-      await login(data.email, data.password);
-
-      const { state } = this.props.location;
-      window.location = state ? state.from.pathname : '/';
+      const response = await register(this.state.data);
+      loginWithJwt(response.headers['x-auth-token']);
+      window.location = '/';
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        // eslint-disable-next-line react/no-access-state-in-setstate
         const errors = { ...this.state.errors };
-        errors.email = ex.response.data;
+        errors.username = ex.response.data;
         this.setState({ errors });
       }
     }
@@ -61,21 +64,22 @@ export class Login extends Form {
     return (
       <div>
         <Helmet>
-          <title>Login</title>
-          <meta name="description" content="Description of Login" />
+          <title>Register</title>
+          <meta name="description" content="Description of Register" />
         </Helmet>
         <Wrapper>
           <Card>
             <Card.Content>
               <Content>
                 <div>
-                  <h1>Login</h1>
+                  <h1>Register</h1>
                   <form onSubmit={this.handleSubmit}>
                     {this.renderInput('email', 'Email')}
                     {this.renderInput('password', 'Password', 'password')}
-                    {this.renderButton('Login', 'submit')}
-                    <Button as={Link} fullwidth color="white" to="/register">
-                      Register
+                    {this.renderInput('name', 'Name')}
+                    {this.renderButton('Register', 'submit')}
+                    <Button as={Link} fullwidth color="white" to="/login">
+                      Login
                     </Button>
                   </form>
                 </div>
@@ -88,4 +92,4 @@ export class Login extends Form {
   }
 }
 
-export default Login;
+export default RegisterForm;

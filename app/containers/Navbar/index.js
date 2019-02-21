@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /**
  *
  * Navbar
@@ -25,6 +26,7 @@ import MessagesList from './MessagesList';
 import reducer from './reducer';
 import saga from './saga';
 import Input from '../../components/common/Input';
+import { getCurrentUser, logout } from '../../services/authService';
 
 const Wrapper = styled.a`
   background-color: blue;
@@ -52,7 +54,14 @@ export class NavigationBar extends React.Component {
     });
   };
 
+  handleLogout = () => {
+    logout();
+    window.location = '/';
+  };
+
   render() {
+    const user = getCurrentUser();
+
     return (
       <Wrapper>
         <Navbar transparent style={{ backgroundColor: '#4267b2' }}>
@@ -95,75 +104,82 @@ export class NavigationBar extends React.Component {
               </Navbar.Item>
             </Navbar.Segment>
             <Navbar.Segment align="end">
-              <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
-                <Avatar size={32} id="carl@cronsioe.se" />
-                Carl
-              </Navbar.Item>
-              <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
-                Startsida
-              </Navbar.Item>
-              <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
-                Skapa
-              </Navbar.Item>
-              <Navbar.Item dropdown>
-                <Navbar.Link arrowless>
-                  <Navbar.Link arrowless>
-                    <NavItem
-                      onClick={this.handleClick}
-                      id="users"
-                      className="fas fa-users fa-lg"
-                      style={{ color: this.state.style.users }}
-                    />
-                  </Navbar.Link>
-                </Navbar.Link>
-                <Navbar.Dropdown align="right" />
-              </Navbar.Item>
-              <Navbar.Item dropdown>
-                <Navbar.Link arrowless>
-                  <NavItem
-                    onClick={this.handleClick}
-                    id="message"
-                    className="fab fa-facebook-messenger fa-lg"
-                    style={{ color: this.state.style.message }}
-                  />
-                </Navbar.Link>
-                <Navbar.Dropdown align="right">
-                  <MessagesList />
-                </Navbar.Dropdown>
-              </Navbar.Item>
-              <Navbar.Item dropdown>
-                <Navbar.Link arrowless>
-                  <NavItem
-                    onClick={this.handleClick}
-                    id="bell"
-                    className="fas fa-bell fa-lg"
-                    style={{ color: this.state.style.bell }}
-                  />
-                </Navbar.Link>
-                <Navbar.Dropdown align="right" />
-              </Navbar.Item>
-              <Navbar.Item dropdown>
-                <Navbar.Link arrowless>
-                  <NavItem
-                    onClick={this.handleClick}
-                    id="question"
-                    className="fas fa-question-circle fa-lg"
-                    style={{ color: this.state.style.question }}
-                  />
-                </Navbar.Link>
-                <Navbar.Dropdown align="right" />
-              </Navbar.Item>
-              <Navbar.Item dropdown>
-                <Navbar.Link arrowless>
-                  <NavItem
-                    onClick={this.handleClick}
-                    id="arrowDown"
-                    className="fas fa-sort-down fa-lg"
-                    style={{ color: this.state.style.arrowDown }}
-                  />
-                </Navbar.Link>
-                <Navbar.Dropdown align="right" />
-              </Navbar.Item>
+              {user ? (
+                <React.Fragment>
+                  <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
+                    <Avatar size={32} id={user._id} />
+                    {user.name}
+                  </Navbar.Item>
+                  <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
+                    Startsida
+                  </Navbar.Item>
+                  <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
+                    Skapa
+                  </Navbar.Item>
+                  <Navbar.Item
+                    onClick={this.handleLogout}
+                    style={{ fontWeight: 'bold', color: 'white' }}
+                  >
+                    Logout
+                  </Navbar.Item>
+                  <Navbar.Item dropdown>
+                    <Navbar.Link arrowless>
+                      <Navbar.Link arrowless>
+                        <NavItem
+                          onClick={this.handleClick}
+                          id="users"
+                          className="fas fa-users fa-lg"
+                          style={{ color: this.state.style.users }}
+                        />
+                      </Navbar.Link>
+                    </Navbar.Link>
+                    <Navbar.Dropdown align="right" />
+                  </Navbar.Item>
+                  <Navbar.Item dropdown>
+                    <Navbar.Link arrowless>
+                      <NavItem
+                        onClick={this.handleClick}
+                        id="message"
+                        className="fab fa-facebook-messenger fa-lg"
+                        style={{ color: this.state.style.message }}
+                      />
+                    </Navbar.Link>
+                    <Navbar.Dropdown align="right">
+                      <MessagesList />
+                    </Navbar.Dropdown>
+                  </Navbar.Item>
+                  <Navbar.Item dropdown>
+                    <Navbar.Link arrowless>
+                      <NavItem
+                        onClick={this.handleClick}
+                        id="bell"
+                        className="fas fa-bell fa-lg"
+                        style={{ color: this.state.style.bell }}
+                      />
+                    </Navbar.Link>
+                    <Navbar.Dropdown align="right" />
+                  </Navbar.Item>
+                  <Navbar.Item dropdown>
+                    <Navbar.Link arrowless>
+                      <NavItem
+                        onClick={this.handleClick}
+                        id="question"
+                        className="fas fa-question-circle fa-lg"
+                        style={{ color: this.state.style.question }}
+                      />
+                    </Navbar.Link>
+                    <Navbar.Dropdown align="right" />
+                  </Navbar.Item>
+                </React.Fragment>
+              ) : (
+                <Navbar.Item
+                  as={Link}
+                  to="/login"
+                  style={{ fontWeight: 'bold', color: 'white' }}
+                >
+                  Login
+                </Navbar.Item>
+              )}
             </Navbar.Segment>
           </Navbar.Menu>
         </Navbar>
