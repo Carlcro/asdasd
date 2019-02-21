@@ -3,6 +3,7 @@ import { Input } from 'rbx';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Avatar from '../../../components/Avatar';
+import { getCurrentUser } from '../../../services/authService';
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,16 +40,20 @@ export default class Commentate extends Component {
   render() {
     return (
       <div>
-        <Wrapper>
-          <Avatar size={32} id="Carl2" />
-          <StyledInput
-            onKeyDown={this.keyPress}
-            placeholder="kommentera..."
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </Wrapper>
+        {getCurrentUser() ? (
+          <Wrapper>
+            <Avatar size={32} id="Carl2" />
+            <StyledInput
+              onKeyDown={this.keyPress}
+              placeholder="kommentera..."
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          </Wrapper>
+        ) : (
+          <h3>You must login to comment</h3>
+        )}
       </div>
     );
   }

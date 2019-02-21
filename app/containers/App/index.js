@@ -8,7 +8,7 @@ import { Column } from 'rbx';
 import Timeline from '../Timeline';
 import Profile from '../Profile';
 import NavigationBar from '../Navbar/index';
-// import Login from '../Login';
+import Login from '../Login';
 import 'react-toastify/dist/ReactToastify.css';
 import 'rbx/index.css';
 
@@ -27,6 +27,7 @@ export default function App() {
       <GlobalBackground>
         <NavigationBar />
         <Column.Group>
+          <Login />
           <Column size="half" offset="one-quarter">
             <Switch>
               <Route exact path="/profile/:id" component={Profile} />

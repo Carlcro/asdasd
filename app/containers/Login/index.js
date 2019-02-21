@@ -9,21 +9,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
-import { Card, Input, Content } from 'rbx';
+import { Card, Content, Button } from 'rbx';
 
 import injectSaga from 'utils/injectSaga';
 import styled from 'styled-components';
 import saga from './saga';
+import { login, logout } from '../../services/authService';
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding-top: 100px;
 `;
 
 /* eslint-disable react/prefer-stateless-function */
 export class Login extends React.Component {
+  handleLogin = async () => {
+    await login('carl@cronsioe.se', '123456');
+    window.location = '/';
+  };
+
+  handleLogout = () => {
+    logout();
+    window.location = '/';
+  };
+
   render() {
     return (
       <div>
@@ -35,8 +44,10 @@ export class Login extends React.Component {
           <Card>
             <Card.Content>
               <Content>
-                <Input type="text" placeholder="e-mail" />
-                <Input type="password" placeholder="password" />
+                <Button onClick={this.handleLogin}>Login</Button>
+                <Button style={{ marginLeft: 20 }} onClick={this.handleLogout}>
+                  Logout
+                </Button>
               </Content>
             </Card.Content>
           </Card>
