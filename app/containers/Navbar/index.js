@@ -71,6 +71,22 @@ export class NavigationBar extends React.Component {
                 <i className="fab fa-facebook fa-2x" />
               </span>
             </Navbar.Item>
+            {user ? (
+              <Navbar.Item
+                onClick={this.handleLogout}
+                style={{ fontWeight: 'bold', color: 'white' }}
+              >
+                Logout
+              </Navbar.Item>
+            ) : (
+              <Navbar.Item
+                as={Link}
+                to="/login"
+                style={{ fontWeight: 'bold', color: 'white' }}
+              >
+                Login
+              </Navbar.Item>
+            )}
           </Navbar.Brand>
           <Navbar.Menu>
             <Navbar.Segment align="start">
@@ -104,7 +120,7 @@ export class NavigationBar extends React.Component {
               </Navbar.Item>
             </Navbar.Segment>
             <Navbar.Segment align="end">
-              {user ? (
+              {user && (
                 <React.Fragment>
                   <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
                     <Avatar size={32} id={user._id} />
@@ -116,12 +132,7 @@ export class NavigationBar extends React.Component {
                   <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
                     Skapa
                   </Navbar.Item>
-                  <Navbar.Item
-                    onClick={this.handleLogout}
-                    style={{ fontWeight: 'bold', color: 'white' }}
-                  >
-                    Logout
-                  </Navbar.Item>
+
                   <Navbar.Item dropdown>
                     <Navbar.Link arrowless>
                       <Navbar.Link arrowless>
@@ -171,14 +182,6 @@ export class NavigationBar extends React.Component {
                     <Navbar.Dropdown align="right" />
                   </Navbar.Item>
                 </React.Fragment>
-              ) : (
-                <Navbar.Item
-                  as={Link}
-                  to="/login"
-                  style={{ fontWeight: 'bold', color: 'white' }}
-                >
-                  Login
-                </Navbar.Item>
               )}
             </Navbar.Segment>
           </Navbar.Menu>
