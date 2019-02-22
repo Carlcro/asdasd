@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Column } from 'rbx';
 import Timeline from '../Timeline';
-import Profile from '../Profile';
+// import Profile from '../Profile';
 import NavigationBar from '../Navbar/index';
 import Login from '../Login';
 import RegisterForm from '../RegisterForm';
@@ -41,7 +41,6 @@ export default class App extends Component {
           <Column.Group>
             <Column size="half" offset="one-quarter">
               <Switch>
-                <Route exact path="/profile/:id" component={Profile} />{' '}
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={RegisterForm} />
                 <Route
