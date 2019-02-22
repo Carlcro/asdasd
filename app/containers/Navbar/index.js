@@ -6,14 +6,7 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-// import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
-
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import PropTypes from 'prop-types';
 import { Navbar, Button, Control, Field } from 'rbx';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -23,17 +16,15 @@ import Avatar from '../../components/Avatar';
 // import makeSelectNavbar from './selectors';
 import MessagesList from './MessagesList';
 
-import reducer from './reducer';
-import saga from './saga';
 import Input from '../../components/common/Input';
-import { getCurrentUser, logout } from '../../services/authService';
+import { logout } from '../../services/authService';
 
 const Wrapper = styled.a`
   background-color: blue;
 `;
 
 /* eslint-disable react/prefer-stateless-function */
-export class NavigationBar extends React.Component {
+export default class NavigationBar extends React.Component {
   state = {
     style: {
       message: '#1a2947',
@@ -60,7 +51,7 @@ export class NavigationBar extends React.Component {
   };
 
   render() {
-    const user = getCurrentUser();
+    const { user } = this.props;
 
     return (
       <Wrapper>
@@ -191,30 +182,6 @@ export class NavigationBar extends React.Component {
   }
 }
 
-/* NavigationBar.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+NavigationBar.propTypes = {
+  user: PropTypes.object,
 };
-
-const mapStateToProps = createStructuredSelector({
-  navigationBar: makeSelectNavigationBar(),
-}); */
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  // mapStateToProps,
-  mapDispatchToProps,
-);
-
-const withReducer = injectReducer({ key: 'navbar', reducer });
-const withSaga = injectSaga({ key: 'navbar', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(NavigationBar);

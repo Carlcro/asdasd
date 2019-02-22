@@ -53,7 +53,7 @@ class LikeAndComment extends Component {
   };
 
   isLiked(likes) {
-    const found = likes.some(el => el._id === '5c6b0c1224afb2f7ec3b94a9');
+    const found = likes.some(el => el._id === this.props.user._id);
     return found;
   }
 
@@ -84,6 +84,7 @@ LikeAndComment.propTypes = {
   handleLike: PropTypes.func,
   id: PropTypes.number,
   likes: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default LikeAndComment;

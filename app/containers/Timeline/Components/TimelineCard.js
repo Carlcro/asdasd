@@ -32,7 +32,7 @@ const TimeStamp = styled.p`
   color: #616770;
 `;
 
-const TimelineCard = ({ item, handleNewComment, handleLike }) => (
+const TimelineCard = ({ user, item, handleNewComment, handleLike }) => (
   <Wrapper>
     <Card style={{ borderRadius: 3 }}>
       <Card.Header style={{ padding: 5 }}>
@@ -52,12 +52,13 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
       </Content>
       <Reactions likes={item.likes} comments={item.comments.length} />
       <LikeAndComment
+        user={user}
         id={item._id}
         handleLike={handleLike}
         likes={item.likes}
       />
       <Comments comments={item.comments} />
-      <Commentate id={item._id} onSubmit={handleNewComment} />
+      <Commentate user={user} id={item._id} onSubmit={handleNewComment} />
     </Card>
   </Wrapper>
 );
@@ -66,6 +67,7 @@ TimelineCard.propTypes = {
   item: PropTypes.object,
   handleNewComment: PropTypes.func,
   handleLike: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default TimelineCard;

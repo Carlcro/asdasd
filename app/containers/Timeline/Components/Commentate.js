@@ -4,7 +4,6 @@ import { Input } from 'rbx';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Avatar from '../../../components/Avatar';
-import { getCurrentUser } from '../../../services/authService';
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,7 +38,7 @@ export default class Commentate extends Component {
   };
 
   render() {
-    const user = getCurrentUser();
+    const { user } = this.props;
     return (
       <div>
         {user ? (
@@ -64,4 +63,5 @@ export default class Commentate extends Component {
 Commentate.propTypes = {
   onSubmit: PropTypes.func,
   id: PropTypes.string,
+  user: PropTypes.object,
 };

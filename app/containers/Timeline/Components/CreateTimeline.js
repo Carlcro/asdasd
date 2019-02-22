@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Card, Textarea } from 'rbx';
 import styled from 'styled-components';
 import Avatar from '../../../components/Avatar';
-import { getCurrentUser } from '../../../services/authService';
 
 const Wrapper = styled.div`
   padding: 10px;
@@ -48,7 +47,7 @@ class CreateTimeline extends Component {
   };
 
   render() {
-    const user = getCurrentUser();
+    const { user } = this.props;
 
     return (
       <Wrapper>
@@ -78,6 +77,7 @@ class CreateTimeline extends Component {
 
 CreateTimeline.propTypes = {
   handleNewTimeline: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default CreateTimeline;
