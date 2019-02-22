@@ -1,5 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { LOAD_TIMELINE, SAVE_COMMENT, SAVE_LIKE } from './constants';
+import {
+  LOAD_TIMELINE,
+  SAVE_COMMENT,
+  SAVE_LIKE,
+  SAVE_TIMELINE,
+} from './constants';
 import {
   timelineLoaded,
   timelineLoadingError,
@@ -7,11 +12,14 @@ import {
   commentSavedError,
   likeSaved,
   likeSavedError,
+  timelineSaved,
+  timelineSavedError,
 } from './actions';
 import {
   getTimeline,
   saveComment,
   saveLike,
+  saveTimeline,
 } from '../../services/timelineService';
 
 const apiEndpoint = '/timeline';
@@ -54,6 +62,19 @@ export function* saveNewComment(action) {
   }
 }
 
+export function* saveNewTimeline(action) {
+  const requestURL = timelineUrl();
+  try {
+    const { data: timeline } = yield call(saveTimeline, {
+      requestURL,
+      content: action.content,
+    });
+    yield put(timelineSaved(timeline));
+  } catch (err) {
+    yield put(timelineSavedError(err));
+  }
+}
+
 export function* saveNewLike(action) {
   const requestURL = likeUrl(action.id);
   try {
@@ -71,4 +92,5 @@ export function* timelineData() {
   yield takeLatest(LOAD_TIMELINE, fetchTimeline);
   yield takeLatest(SAVE_COMMENT, saveNewComment);
   yield takeLatest(SAVE_LIKE, saveNewLike);
+  yield takeLatest(SAVE_TIMELINE, saveNewTimeline);
 }

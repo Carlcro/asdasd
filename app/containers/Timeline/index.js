@@ -15,11 +15,23 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import _ from 'lodash';
+import styled from 'styled-components';
 import makeSelectTimeline from './selectors';
 import reducer from './reducer';
 import { timelineData as saga } from './saga';
 import TimelineCard from './Components/TimelineCard';
-import { loadTimeline, saveComment, saveLike } from './actions';
+import CreateTimeline from './Components/CreateTimeline';
+import { loadTimeline, saveComment, saveLike, saveTimeline } from './actions';
+
+const Wrapper = styled.div`
+  width: 500px;
+  padding: 20px;
+
+  @media only screen and (max-width: 540px) {
+    /* For mobile phones: */
+    width: 100%;
+  }
+`;
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Timeline extends Component {
@@ -35,26 +47,33 @@ class Timeline extends Component {
     this.props.saveLike(id, liked);
   };
 
+  handleNewTimeline = content => {
+    this.props.saveTimeline(content);
+  };
+
   render() {
-    const sortedArray = _.sortBy(this.props.timeline, 'timeStamp');
+    const sortedArray = _.orderBy(this.props.timeline, 'timeStamp', 'desc');
     return (
       <div>
         <Helmet>
           <title>Timeline</title>
           <meta name="description" content="Description of Timeline" />
         </Helmet>
-        {this.props.timeline.length > 0 && (
-          <div>
-            {sortedArray.map(item => (
-              <TimelineCard
-                handleNewComment={this.handleNewComment}
-                handleLike={this.handleLike}
-                key={item.id}
-                item={item}
-              />
-            ))}
-          </div>
-        )}
+        <Wrapper>
+          <CreateTimeline handleNewTimeline={this.handleNewTimeline} />
+          {this.props.timeline.length > 0 && (
+            <div>
+              {sortedArray.map(item => (
+                <TimelineCard
+                  handleNewComment={this.handleNewComment}
+                  handleLike={this.handleLike}
+                  key={item.id}
+                  item={item}
+                />
+              ))}
+            </div>
+          )}
+        </Wrapper>
       </div>
     );
   }
@@ -65,6 +84,7 @@ Timeline.propTypes = {
   loadTimeline: PropTypes.func,
   saveComment: PropTypes.func,
   saveLike: PropTypes.func,
+  saveTimeline: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -76,6 +96,7 @@ function mapDispatchToProps(dispatch) {
     loadTimeline: () => dispatch(loadTimeline()),
     saveComment: (comment, id) => dispatch(saveComment(comment, id)),
     saveLike: (id, liked) => dispatch(saveLike(id, liked)),
+    saveTimeline: content => dispatch(saveTimeline(content)),
   };
 }
 

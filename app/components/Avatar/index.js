@@ -11,7 +11,6 @@ import { Image } from 'rbx';
 import { PropTypes } from 'prop-types';
 
 const StyledAvatar = styled.div`
-  float: left;
   margin: 10px 10px 10px 10px;
 `;
 
