@@ -42,7 +42,7 @@ const TimelineCard = ({ item, handleNewComment, handleLike }) => (
     <Card>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>
-          <Avatar size={48} id={item._id} />
+          <Avatar size={48} id={item.author._id} />
           <div>
             <UsernameLink name={item.author.name} id={item.author._id} />
             <TimeStamp>
