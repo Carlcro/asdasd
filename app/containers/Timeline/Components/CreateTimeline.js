@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Input } from 'rbx';
+import { Card, Textarea } from 'rbx';
 import styled from 'styled-components';
 import Avatar from '../../../components/Avatar';
 import { getCurrentUser } from '../../../services/authService';
@@ -10,8 +10,10 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(Textarea)`
+  margin-top: 20px;
   outline: none;
+  width: 100%;
 `;
 
 const SubWrapper = styled.div`
@@ -22,6 +24,13 @@ const SubWrapper = styled.div`
 const Content = styled.div`
   padding: 0px;
   font-size: 14px;
+`;
+
+const StyledCardHeaderTitel = styled(Card.Header.Title)`
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
 `;
 
 class CreateTimeline extends Component {
@@ -45,8 +54,8 @@ class CreateTimeline extends Component {
       <Wrapper>
         {user && (
           <Card style={{ borderRadius: 3 }}>
-            <Card.Header style={{ backgroundColor: '#f5f6f7' }}>
-              <Card.Header.Title>Skapa inlägg</Card.Header.Title>
+            <Card.Header style={{ backgroundColor: '#f5f6f7', padding: 8 }}>
+              <StyledCardHeaderTitel>Skapa inlägg</StyledCardHeaderTitel>
             </Card.Header>
             <Content>
               <SubWrapper>
@@ -55,8 +64,8 @@ class CreateTimeline extends Component {
                   onKeyDown={this.keyPress}
                   value={this.state.value}
                   onChange={this.handleChange}
-                  type="text"
                   placeholder="Vad funderar du på?"
+                  fixedSize
                 />
               </SubWrapper>
             </Content>

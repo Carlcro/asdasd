@@ -14,6 +14,7 @@ import UsernameLink from '../../../components/UsernameLink/index';
 const Content = styled.div`
   padding: 20px;
   font-size: 14px;
+  line-height: 1.38;
 `;
 
 const Wrapper = styled.div`
