@@ -53,6 +53,7 @@ class LikeAndComment extends Component {
   };
 
   isLiked(likes) {
+    if (!this.props.user) return false;
     const found = likes.some(el => el._id === this.props.user._id);
     return found;
   }
