@@ -43,23 +43,25 @@ class CreateTimeline extends Component {
 
     return (
       <Wrapper>
-        <Card style={{ borderRadius: 3 }}>
-          <Card.Header style={{ backgroundColor: '#f5f6f7' }}>
-            <Card.Header.Title>Skapa inlägg</Card.Header.Title>
-          </Card.Header>
-          <Content>
-            <SubWrapper>
-              <Avatar size={48} id={user._id} />
-              <StyledInput
-                onKeyDown={this.keyPress}
-                value={this.state.value}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="Vad funderar du på?"
-              />
-            </SubWrapper>
-          </Content>
-        </Card>
+        {user && (
+          <Card style={{ borderRadius: 3 }}>
+            <Card.Header style={{ backgroundColor: '#f5f6f7' }}>
+              <Card.Header.Title>Skapa inlägg</Card.Header.Title>
+            </Card.Header>
+            <Content>
+              <SubWrapper>
+                <Avatar size={48} id={user._id} />
+                <StyledInput
+                  onKeyDown={this.keyPress}
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  type="text"
+                  placeholder="Vad funderar du på?"
+                />
+              </SubWrapper>
+            </Content>
+          </Card>
+        )}
       </Wrapper>
     );
   }

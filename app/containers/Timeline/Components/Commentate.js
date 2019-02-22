@@ -54,7 +54,7 @@ export default class Commentate extends Component {
             />
           </Wrapper>
         ) : (
-          <h3>You must login to comment</h3>
+          <div />
         )}
       </div>
     );
