@@ -14,6 +14,10 @@ export function saveDayType(dayType) {
   return http.post(dayType.requestURL, dayType.body);
 }
 
+export function saveTimeline(payload) {
+  return http.post(payload.requestURL, { body: payload.content });
+}
+
 export function saveComment(payload) {
   return http.put(payload.requestURL, { content: payload.content });
 }

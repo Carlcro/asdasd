@@ -8,6 +8,9 @@ import {
   SAVE_LIKE,
   SAVE_LIKE_SUCCESS,
   SAVE_LIKE_ERROR,
+  SAVE_TIMELINE,
+  SAVE_TIMELINE_SUCCESS,
+  SAVE_TIMELINE_ERROR,
 } from './constants';
 
 export function loadTimeline() {
@@ -64,6 +67,25 @@ export function likeSaved(timeline) {
 export function likeSavedError(error) {
   return {
     type: SAVE_LIKE_ERROR,
+    error,
+  };
+}
+
+export function saveTimeline(content) {
+  return {
+    type: SAVE_TIMELINE,
+    content,
+  };
+}
+export function timelineSaved(timeline) {
+  return {
+    type: SAVE_TIMELINE_SUCCESS,
+    timeline,
+  };
+}
+export function timelineSavedError(error) {
+  return {
+    type: SAVE_TIMELINE_ERROR,
     error,
   };
 }

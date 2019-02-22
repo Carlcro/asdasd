@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Avatar from '../../../components/Avatar';
 import UsernameLink from '../../../components/UsernameLink/index';
 
-const Wrapper = styled.div`
+const SubWrapper = styled.div`
   display: flex;
   border-radius: 25px;
   background: #f2f3f5;
@@ -15,14 +15,19 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
 const Comment = ({ item }) => (
-  <div>
+  <Wrapper>
     <Avatar size={32} id={item.userId._id} />
-    <Wrapper>
+    <SubWrapper>
       <UsernameLink name={item.userId.name} id={item._id} />
       <span>{item.content}</span>
-    </Wrapper>
-  </div>
+    </SubWrapper>
+  </Wrapper>
 );
 
 Comment.propTypes = {

@@ -17,13 +17,7 @@ const Content = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 20px;
-  width: 500px;
-
-  @media only screen and (max-width: 540px) {
-    /* For mobile phones: */
-    width: 100%;
-  }
+  padding: 10px;
 `;
 
 const StyledHeader = styled.div`
@@ -39,7 +33,7 @@ const TimeStamp = styled.p`
 
 const TimelineCard = ({ item, handleNewComment, handleLike }) => (
   <Wrapper>
-    <Card>
+    <Card style={{ borderRadius: 3 }}>
       <Card.Header style={{ padding: 5 }}>
         <StyledHeader>
           <Avatar size={48} id={item.author._id} />

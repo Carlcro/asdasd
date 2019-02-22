@@ -23,6 +23,9 @@ import {
   SAVE_LIKE,
   SAVE_LIKE_SUCCESS,
   SAVE_LIKE_ERROR,
+  SAVE_TIMELINE,
+  SAVE_TIMELINE_SUCCESS,
+  SAVE_TIMELINE_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -61,6 +64,17 @@ function timelineReducer(state = initialState, action) {
       return state.set('timeline', timeline).set('loading', false);
     }
     case SAVE_LIKE_ERROR:
+      return state.set('error', action.error).set('loading', false);
+    case SAVE_TIMELINE:
+      return state.set('loading', true).set('error', false);
+    case SAVE_TIMELINE_SUCCESS: {
+      const timeline = state
+        .get('timeline')
+        .filter(x => x._id !== action.timeline._id);
+      timeline.push(action.timeline);
+      return state.set('timeline', timeline).set('loading', false);
+    }
+    case SAVE_TIMELINE_ERROR:
       return state.set('error', action.error).set('loading', false);
     default:
       return state;
