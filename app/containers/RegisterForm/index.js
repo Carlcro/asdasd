@@ -31,7 +31,7 @@ export class RegisterForm extends Form {
   };
 
   schema = {
-    username: Joi.string()
+    email: Joi.string()
       .required()
       .email()
       .label('Username'),
@@ -79,7 +79,7 @@ export class RegisterForm extends Form {
                     {this.renderInput('name', 'Name')}
                     {this.renderButton('Register', 'submit')}
                     <Button as={Link} fullwidth color="white" to="/login">
-                      Login
+                      Back to Login
                     </Button>
                   </form>
                 </div>
