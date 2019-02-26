@@ -52,6 +52,7 @@ class Timeline extends Component {
   };
 
   render() {
+    const { user } = this.props;
     const sortedArray = _.orderBy(this.props.timeline, 'timeStamp', 'desc');
     return (
       <div>
@@ -60,11 +61,15 @@ class Timeline extends Component {
           <meta name="description" content="Description of Timeline" />
         </Helmet>
         <Wrapper>
-          <CreateTimeline handleNewTimeline={this.handleNewTimeline} />
+          <CreateTimeline
+            user={user}
+            handleNewTimeline={this.handleNewTimeline}
+          />
           {this.props.timeline.length > 0 && (
             <div>
               {sortedArray.map(item => (
                 <TimelineCard
+                  user={user}
                   handleNewComment={this.handleNewComment}
                   handleLike={this.handleLike}
                   key={item.id}
@@ -85,6 +90,7 @@ Timeline.propTypes = {
   saveComment: PropTypes.func,
   saveLike: PropTypes.func,
   saveTimeline: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

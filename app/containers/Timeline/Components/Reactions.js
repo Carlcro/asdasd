@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Likes from './Likes';
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,20 +10,10 @@ const Wrapper = styled.div`
   padding: 0 50px 0 50px;
 `;
 
-const Reactions = props => (
+const Reactions = ({ likes, comments }) => (
   <Wrapper>
-    <div>
-      {props.likes.length > 0 && (
-        <div>
-          <i
-            style={{ color: '#417ffc', marginRight: 5 }}
-            className="far fa-thumbs-up fa-lg"
-          />
-          {props.likes.length}
-        </div>
-      )}
-    </div>
-    {props.comments} {props.comments > 1 ? ' kommentarer' : 'kommentar'}
+    <Likes likes={likes} />
+    {comments} {comments > 1 ? ' kommentarer' : 'kommentar'}
   </Wrapper>
 );
 

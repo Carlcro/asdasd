@@ -6,9 +6,8 @@
 
 import { FormattedMessage } from 'react-intl';
 
-import messages from './messages';
-
 import React, { Component } from 'react';
+import messages from './messages';
 
 class NotFound extends Component {
   handleNavigation = () => {
@@ -20,7 +19,7 @@ class NotFound extends Component {
       <div>
         <FormattedMessage {...messages.header} />
         <div>
-          <button onClick={this.handleNavigation}>
+          <button type="button" onClick={this.handleNavigation}>
             <FormattedMessage {...messages.goBack} />
           </button>
         </div>
