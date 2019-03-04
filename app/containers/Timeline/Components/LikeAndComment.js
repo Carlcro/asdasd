@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
@@ -38,13 +38,28 @@ const Comment = styled.a`
     background-color: rgb(246, 246, 247);
   }
 `;
+// Create the keyframes
+const rotate = keyframes`
+  0%   {left:0px; top:0px;}
+  50%  {left:200px; top:200px;}
+  75%  {left:0px; top:200px;}
+  100% {left:0px; top:0px;}
+`;
+
+// Here we create a component that will rotate everything we pass in over two seconds
+const LikeAnimate = styled.i`
+  display: inline-block;
+  animation: ${rotate} 2s linear;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+`;
 
 // eslint-disable-next-line react/prefer-stateless-function
 class LikeAndComment extends Component {
   renderLike = likes => {
     if (this.isLiked(likes))
       return (
-        <i
+        <LikeAnimate
           style={{ marginRight: 5, color: '#3784ff' }}
           className="fas fa-thumbs-up fa-lg"
         />
@@ -58,17 +73,14 @@ class LikeAndComment extends Component {
     return found;
   }
 
+  handleLike = () => {
+    this.props.handleLike(this.props.id, !this.isLiked(this.props.likes));
+  };
+
   render() {
     return (
       <Wrapper>
-        <Like
-          onClick={() =>
-            this.props.handleLike(
-              this.props.id,
-              !this.isLiked(this.props.likes),
-            )
-          }
-        >
+        <Like onClick={this.handleLike}>
           {this.renderLike(this.props.likes)}
           Gilla
         </Like>

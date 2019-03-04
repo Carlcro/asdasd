@@ -55,7 +55,10 @@ export default class NavigationBar extends React.Component {
 
     return (
       <Wrapper>
-        <Navbar transparent style={{ backgroundColor: '#4267b2' }}>
+        <Navbar
+          transparent
+          style={{ height: 43, fontSize: 12, backgroundColor: '#4267b2' }}
+        >
           <Navbar.Brand>
             <Navbar.Item as={Link} to="/">
               <span style={{ color: 'white' }}>
@@ -88,10 +91,11 @@ export default class NavigationBar extends React.Component {
                       style={{
                         backgroundColor: 'white',
                         color: 'black',
-                        width: 500,
-                        height: 36,
+                        width: 400,
+                        height: 23,
                         borderRadius: 3,
                         paddingLeft: 10,
+                        fontWeight: 'normal',
                       }}
                       type="text"
                       placeholder="Search"
@@ -100,7 +104,8 @@ export default class NavigationBar extends React.Component {
                   <Control>
                     <Button
                       style={{
-                        width: 55,
+                        width: 46,
+                        height: 23,
                       }}
                       static
                     >
@@ -114,7 +119,7 @@ export default class NavigationBar extends React.Component {
               {user && (
                 <React.Fragment>
                   <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
-                    <Avatar size={32} id={user._id} />
+                    <Avatar size={24} id={user._id} />
                     {user.name}
                   </Navbar.Item>
                   <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>

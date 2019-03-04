@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -6,8 +7,8 @@ import Avatar from '../../components/Avatar';
 import img from '../../images/BackgroundImage.png';
 
 const StyledName = styled(Link)`
-  top: 80px;
-  position: absolute;
+  display: flex;
+  flex: 1;
   font-size: 24px;
   font-weight: 500;
   color: #fff;
@@ -16,32 +17,19 @@ const StyledName = styled(Link)`
   }
 `;
 
-const HeaderImage = styled.div`
-  position: relative;
+const Wrapper = styled.div`
+  display: flex;
   background-image: url(${img});
+  align-content: flex-end;
   width: 852px;
-  height: 315px;
+  height: 500px;
   border-bottom-color: rgba(0, 0, 0, 0.4);
 `;
 
-const Wrapper = styled.div`
-  position: relative;
-  height: 360px;
-`;
-
-const SubWrapper = styled.div`
-  position: absolute;
-  top: 200px;
-`;
-
-const ProfileHeader = () => (
+const ProfileHeader = props => (
   <Wrapper>
-    <HeaderImage>
-      <SubWrapper>
-        <Avatar size={128} is="carl@cronsioe.se" />
-        <StyledName to={`/profile/${1}`}>Carl Cronsioe</StyledName>
-      </SubWrapper>
-    </HeaderImage>
+    <Avatar size={128} id={props.id} />
+    <StyledName to={`/profile/${props.id}`}>{props.name}</StyledName>
   </Wrapper>
 );
 
