@@ -118,7 +118,11 @@ export default class NavigationBar extends React.Component {
             <Navbar.Segment align="end">
               {user && (
                 <React.Fragment>
-                  <Navbar.Item style={{ fontWeight: 'bold', color: 'white' }}>
+                  <Navbar.Item
+                    as={Link}
+                    to={`/profile/${user._id}`}
+                    style={{ fontWeight: 'bold', color: 'white' }}
+                  >
                     <Avatar size={24} id={user._id} />
                     {user.name}
                   </Navbar.Item>

@@ -7,9 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../../services/userService';
-// import { FormattedMessage } from 'react-intl';
 import ProfileHeader from './ProfileHeader';
-/* eslint-disable react/prefer-stateless-function */
 const Profile = props => {
   const [user, setUser] = useState({});
 
