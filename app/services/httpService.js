@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === 'production'
-    ? 'https://face-clone-api.herokuapp.com/api'
+    ? 'https://face-clone-api.vercel.app/api'
     : 'http://localhost:3001/api';
 
 axios.interceptors.response.use(null, error => {
